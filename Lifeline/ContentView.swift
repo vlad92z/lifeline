@@ -10,7 +10,10 @@ import SwiftUI
 struct ContentView: View {
 
     @State private var birthday = Date()
-    let lifeExpectency = 83
+    @AppStorage("selectedDate") var storedBirthday = Date().timeIntervalSince1970
+    
+    let lifeExpectancy = 83
+    
     var age: Double {
         let now = Date()
         let ageComponents = Calendar.current.dateComponents(
@@ -27,9 +30,9 @@ struct ContentView: View {
     }
     
     var timeLeft: (yearsLeft: Int, weeksLeft: Int, percentageLeft: Int) {
-        let yearsLeft = Int(lifeExpectency - Int(age))
+        let yearsLeft = Int(lifeExpectancy - Int(age))
         let weeksLeft = yearsLeft * 52
-        let percentage = 100 * yearsLeft / lifeExpectency
+        let percentage = 100 * yearsLeft / lifeExpectancy
         return (yearsLeft, weeksLeft, percentage)
     }
     
@@ -46,7 +49,7 @@ struct ContentView: View {
                     Text("You have \(timeLeft.yearsLeft) years, " +
                          "\(timeLeft.weeksLeft) weeks or " +
                          "\(timeLeft.percentageLeft)% left")
-                    ProgressView(remaining: age / Double(lifeExpectency))
+                    ProgressView(remaining: age / Double(lifeExpectancy))
                         .frame(height: 4)
                     Divider()
 
@@ -54,12 +57,17 @@ struct ContentView: View {
                     DatePicker("Birthday", selection: $birthday, displayedComponents: .date)
                         .datePickerStyle(WheelDatePickerStyle())
                         .labelsHidden()
+                        .onChange(of: birthday) {
+                            storedBirthday = birthday.timeIntervalSince1970
+                        }
 
                     Text("Your age is \(String(format: "%.2f", age)) years")
                         .padding()
                 }
             }
 
+        }.onAppear {
+            birthday = Date(timeIntervalSince1970: storedBirthday)
         }
     }
 }
