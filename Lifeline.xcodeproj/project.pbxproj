@@ -14,6 +14,7 @@
 		642470532B8B3B1B00951547 /* LifelineTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 642470522B8B3B1B00951547 /* LifelineTests.swift */; };
 		6424705D2B8B3B1B00951547 /* LifelineUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6424705C2B8B3B1B00951547 /* LifelineUITests.swift */; };
 		6424705F2B8B3B1B00951547 /* LifelineUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6424705E2B8B3B1B00951547 /* LifelineUITestsLaunchTests.swift */; };
+		645DDA062B8BD4AE00F712E4 /* ProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 645DDA052B8BD4AE00F712E4 /* ProgressView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +45,7 @@
 		642470582B8B3B1B00951547 /* LifelineUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LifelineUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6424705C2B8B3B1B00951547 /* LifelineUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LifelineUITests.swift; sourceTree = "<group>"; };
 		6424705E2B8B3B1B00951547 /* LifelineUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LifelineUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		645DDA052B8BD4AE00F712E4 /* ProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,6 +100,7 @@
 				642470432B8B3B1A00951547 /* ContentView.swift */,
 				642470452B8B3B1A00951547 /* Assets.xcassets */,
 				642470472B8B3B1A00951547 /* Preview Content */,
+				645DDA052B8BD4AE00F712E4 /* ProgressView.swift */,
 			);
 			path = Lifeline;
 			sourceTree = "<group>";
@@ -259,6 +262,7 @@
 			files = (
 				642470442B8B3B1A00951547 /* ContentView.swift in Sources */,
 				642470422B8B3B1A00951547 /* LifelineApp.swift in Sources */,
+				645DDA062B8BD4AE00F712E4 /* ProgressView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
