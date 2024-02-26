@@ -10,7 +10,7 @@ import SwiftUI
 struct ContentView: View {
 
     @State private var birthday = Date()
-    @AppStorage("selectedDate") var storedBirthday = Date().timeIntervalSince1970
+    @SharedAppStorage("selectedDate") var storedBirthday = Date().timeIntervalSince1970
     
     let lifeExpectancy = 83
     
@@ -45,13 +45,7 @@ struct ContentView: View {
                         .fontWeight(.bold)
                         .padding(.top, 10)
                         .padding(.bottom, 20)
-                    let timeLeft = timeLeft
-                    Text("You have \(timeLeft.yearsLeft) years, " +
-                         "\(timeLeft.weeksLeft) weeks or " +
-                         "\(timeLeft.percentageLeft)% left")
-                    ProgressView(remaining: age / Double(lifeExpectancy))
-                        .frame(height: 4)
-                    Divider()
+                    LifelineView(birthday: birthday)
 
                     Text("Your birthday").padding(.top, 40)
                     DatePicker("Birthday", selection: $birthday, displayedComponents: .date)

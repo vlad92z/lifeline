@@ -14,7 +14,25 @@
 		642470532B8B3B1B00951547 /* LifelineTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 642470522B8B3B1B00951547 /* LifelineTests.swift */; };
 		6424705D2B8B3B1B00951547 /* LifelineUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6424705C2B8B3B1B00951547 /* LifelineUITests.swift */; };
 		6424705F2B8B3B1B00951547 /* LifelineUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6424705E2B8B3B1B00951547 /* LifelineUITestsLaunchTests.swift */; };
-		645DDA062B8BD4AE00F712E4 /* ProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 645DDA052B8BD4AE00F712E4 /* ProgressView.swift */; };
+		645B0B292B8CDA5B00D14476 /* LifeStats.swift in Sources */ = {isa = PBXBuildFile; fileRef = 645B0B282B8CDA5B00D14476 /* LifeStats.swift */; };
+		645B0B2A2B8CDA5B00D14476 /* LifeStats.swift in Sources */ = {isa = PBXBuildFile; fileRef = 645B0B282B8CDA5B00D14476 /* LifeStats.swift */; };
+		645B0B2C2B8CDD6B00D14476 /* AppIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 645B0B2B2B8CDD6B00D14476 /* AppIntent.swift */; };
+		645B0B2D2B8CDD6B00D14476 /* AppIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 645B0B2B2B8CDD6B00D14476 /* AppIntent.swift */; };
+		645B0B2F2B8CDE6B00D14476 /* LifelineWidgetSmall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 645B0B2E2B8CDE6B00D14476 /* LifelineWidgetSmall.swift */; };
+		645B0B312B8CE78500D14476 /* LifelineWidgetMedium.swift in Sources */ = {isa = PBXBuildFile; fileRef = 645B0B302B8CE78500D14476 /* LifelineWidgetMedium.swift */; };
+		645DDA062B8BD4AE00F712E4 /* LifelineProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 645DDA052B8BD4AE00F712E4 /* LifelineProgressView.swift */; };
+		645DDA2B2B8BDDE500F712E4 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 645DDA2A2B8BDDE500F712E4 /* WidgetKit.framework */; };
+		645DDA2D2B8BDDE500F712E4 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 645DDA2C2B8BDDE500F712E4 /* SwiftUI.framework */; };
+		645DDA302B8BDDE500F712E4 /* WidgetExtensionBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 645DDA2F2B8BDDE500F712E4 /* WidgetExtensionBundle.swift */; };
+		645DDA322B8BDDE500F712E4 /* WidgetExtensionLiveActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 645DDA312B8BDDE500F712E4 /* WidgetExtensionLiveActivity.swift */; };
+		645DDA342B8BDDE500F712E4 /* WidgetExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 645DDA332B8BDDE500F712E4 /* WidgetExtension.swift */; };
+		645DDA382B8BDDE600F712E4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 645DDA372B8BDDE600F712E4 /* Assets.xcassets */; };
+		645DDA3C2B8BDDE600F712E4 /* WidgetExtensionExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 645DDA282B8BDDE500F712E4 /* WidgetExtensionExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		645DDA422B8BDF5500F712E4 /* LifelineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 645DDA412B8BDF5500F712E4 /* LifelineView.swift */; };
+		645DDA432B8BDF5500F712E4 /* LifelineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 645DDA412B8BDF5500F712E4 /* LifelineView.swift */; };
+		645DDA442B8BE0D800F712E4 /* LifelineProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 645DDA052B8BD4AE00F712E4 /* LifelineProgressView.swift */; };
+		645DDA482B8BE3F500F712E4 /* SharedAppStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 645DDA472B8BE3F500F712E4 /* SharedAppStorage.swift */; };
+		645DDA492B8BE3F500F712E4 /* SharedAppStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 645DDA472B8BE3F500F712E4 /* SharedAppStorage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -32,7 +50,28 @@
 			remoteGlobalIDString = 6424703D2B8B3B1900951547;
 			remoteInfo = Lifeline;
 		};
+		645DDA3A2B8BDDE600F712E4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 642470362B8B3B1900951547 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 645DDA272B8BDDE500F712E4;
+			remoteInfo = WidgetExtensionExtension;
+		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		645DDA3D2B8BDDE600F712E4 /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				645DDA3C2B8BDDE600F712E4 /* WidgetExtensionExtension.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		6424703E2B8B3B1A00951547 /* Lifeline.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Lifeline.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -45,7 +84,23 @@
 		642470582B8B3B1B00951547 /* LifelineUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LifelineUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6424705C2B8B3B1B00951547 /* LifelineUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LifelineUITests.swift; sourceTree = "<group>"; };
 		6424705E2B8B3B1B00951547 /* LifelineUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LifelineUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		645DDA052B8BD4AE00F712E4 /* ProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressView.swift; sourceTree = "<group>"; };
+		645B0B282B8CDA5B00D14476 /* LifeStats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LifeStats.swift; sourceTree = "<group>"; };
+		645B0B2B2B8CDD6B00D14476 /* AppIntent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppIntent.swift; sourceTree = "<group>"; };
+		645B0B2E2B8CDE6B00D14476 /* LifelineWidgetSmall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LifelineWidgetSmall.swift; sourceTree = "<group>"; };
+		645B0B302B8CE78500D14476 /* LifelineWidgetMedium.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LifelineWidgetMedium.swift; sourceTree = "<group>"; };
+		645DDA052B8BD4AE00F712E4 /* LifelineProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LifelineProgressView.swift; sourceTree = "<group>"; };
+		645DDA282B8BDDE500F712E4 /* WidgetExtensionExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = WidgetExtensionExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		645DDA2A2B8BDDE500F712E4 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
+		645DDA2C2B8BDDE500F712E4 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
+		645DDA2F2B8BDDE500F712E4 /* WidgetExtensionBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetExtensionBundle.swift; sourceTree = "<group>"; };
+		645DDA312B8BDDE500F712E4 /* WidgetExtensionLiveActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetExtensionLiveActivity.swift; sourceTree = "<group>"; };
+		645DDA332B8BDDE500F712E4 /* WidgetExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetExtension.swift; sourceTree = "<group>"; };
+		645DDA372B8BDDE600F712E4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		645DDA392B8BDDE600F712E4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		645DDA412B8BDF5500F712E4 /* LifelineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LifelineView.swift; sourceTree = "<group>"; };
+		645DDA452B8BE23700F712E4 /* WidgetExtensionExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = WidgetExtensionExtension.entitlements; sourceTree = "<group>"; };
+		645DDA462B8BE25500F712E4 /* Lifeline.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Lifeline.entitlements; sourceTree = "<group>"; };
+		645DDA472B8BE3F500F712E4 /* SharedAppStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedAppStorage.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,15 +125,27 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		645DDA252B8BDDE500F712E4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				645DDA2D2B8BDDE500F712E4 /* SwiftUI.framework in Frameworks */,
+				645DDA2B2B8BDDE500F712E4 /* WidgetKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
 		642470352B8B3B1900951547 = {
 			isa = PBXGroup;
 			children = (
+				645DDA452B8BE23700F712E4 /* WidgetExtensionExtension.entitlements */,
 				642470402B8B3B1A00951547 /* Lifeline */,
 				642470512B8B3B1B00951547 /* LifelineTests */,
 				6424705B2B8B3B1B00951547 /* LifelineUITests */,
+				645DDA2E2B8BDDE500F712E4 /* WidgetExtension */,
+				645DDA292B8BDDE500F712E4 /* Frameworks */,
 				6424703F2B8B3B1A00951547 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -89,6 +156,7 @@
 				6424703E2B8B3B1A00951547 /* Lifeline.app */,
 				6424704E2B8B3B1B00951547 /* LifelineTests.xctest */,
 				642470582B8B3B1B00951547 /* LifelineUITests.xctest */,
+				645DDA282B8BDDE500F712E4 /* WidgetExtensionExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -96,11 +164,15 @@
 		642470402B8B3B1A00951547 /* Lifeline */ = {
 			isa = PBXGroup;
 			children = (
+				645B0B272B8CBAB000D14476 /* Model */,
+				645DDA462B8BE25500F712E4 /* Lifeline.entitlements */,
 				642470412B8B3B1A00951547 /* LifelineApp.swift */,
 				642470432B8B3B1A00951547 /* ContentView.swift */,
 				642470452B8B3B1A00951547 /* Assets.xcassets */,
 				642470472B8B3B1A00951547 /* Preview Content */,
-				645DDA052B8BD4AE00F712E4 /* ProgressView.swift */,
+				645DDA052B8BD4AE00F712E4 /* LifelineProgressView.swift */,
+				645DDA412B8BDF5500F712E4 /* LifelineView.swift */,
+				645DDA472B8BE3F500F712E4 /* SharedAppStorage.swift */,
 			);
 			path = Lifeline;
 			sourceTree = "<group>";
@@ -130,6 +202,38 @@
 			path = LifelineUITests;
 			sourceTree = "<group>";
 		};
+		645B0B272B8CBAB000D14476 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				645B0B282B8CDA5B00D14476 /* LifeStats.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		645DDA292B8BDDE500F712E4 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				645DDA2A2B8BDDE500F712E4 /* WidgetKit.framework */,
+				645DDA2C2B8BDDE500F712E4 /* SwiftUI.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		645DDA2E2B8BDDE500F712E4 /* WidgetExtension */ = {
+			isa = PBXGroup;
+			children = (
+				645B0B2B2B8CDD6B00D14476 /* AppIntent.swift */,
+				645DDA2F2B8BDDE500F712E4 /* WidgetExtensionBundle.swift */,
+				645DDA312B8BDDE500F712E4 /* WidgetExtensionLiveActivity.swift */,
+				645DDA332B8BDDE500F712E4 /* WidgetExtension.swift */,
+				645DDA372B8BDDE600F712E4 /* Assets.xcassets */,
+				645DDA392B8BDDE600F712E4 /* Info.plist */,
+				645B0B2E2B8CDE6B00D14476 /* LifelineWidgetSmall.swift */,
+				645B0B302B8CE78500D14476 /* LifelineWidgetMedium.swift */,
+			);
+			path = WidgetExtension;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -140,10 +244,12 @@
 				6424703A2B8B3B1900951547 /* Sources */,
 				6424703B2B8B3B1900951547 /* Frameworks */,
 				6424703C2B8B3B1900951547 /* Resources */,
+				645DDA3D2B8BDDE600F712E4 /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				645DDA3B2B8BDDE600F712E4 /* PBXTargetDependency */,
 			);
 			name = Lifeline;
 			productName = Lifeline;
@@ -186,6 +292,23 @@
 			productReference = 642470582B8B3B1B00951547 /* LifelineUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
+		645DDA272B8BDDE500F712E4 /* WidgetExtensionExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 645DDA402B8BDDE600F712E4 /* Build configuration list for PBXNativeTarget "WidgetExtensionExtension" */;
+			buildPhases = (
+				645DDA242B8BDDE500F712E4 /* Sources */,
+				645DDA252B8BDDE500F712E4 /* Frameworks */,
+				645DDA262B8BDDE500F712E4 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = WidgetExtensionExtension;
+			productName = WidgetExtensionExtension;
+			productReference = 645DDA282B8BDDE500F712E4 /* WidgetExtensionExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -207,6 +330,9 @@
 						CreatedOnToolsVersion = 15.2;
 						TestTargetID = 6424703D2B8B3B1900951547;
 					};
+					645DDA272B8BDDE500F712E4 = {
+						CreatedOnToolsVersion = 15.2;
+					};
 				};
 			};
 			buildConfigurationList = 642470392B8B3B1900951547 /* Build configuration list for PBXProject "Lifeline" */;
@@ -225,6 +351,7 @@
 				6424703D2B8B3B1900951547 /* Lifeline */,
 				6424704D2B8B3B1B00951547 /* LifelineTests */,
 				642470572B8B3B1B00951547 /* LifelineUITests */,
+				645DDA272B8BDDE500F712E4 /* WidgetExtensionExtension */,
 			);
 		};
 /* End PBXProject section */
@@ -253,6 +380,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		645DDA262B8BDDE500F712E4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				645DDA382B8BDDE600F712E4 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -260,9 +395,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				645DDA422B8BDF5500F712E4 /* LifelineView.swift in Sources */,
 				642470442B8B3B1A00951547 /* ContentView.swift in Sources */,
+				645DDA482B8BE3F500F712E4 /* SharedAppStorage.swift in Sources */,
+				645B0B292B8CDA5B00D14476 /* LifeStats.swift in Sources */,
+				645B0B2C2B8CDD6B00D14476 /* AppIntent.swift in Sources */,
 				642470422B8B3B1A00951547 /* LifelineApp.swift in Sources */,
-				645DDA062B8BD4AE00F712E4 /* ProgressView.swift in Sources */,
+				645DDA062B8BD4AE00F712E4 /* LifelineProgressView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -283,6 +422,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		645DDA242B8BDDE500F712E4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				645B0B2F2B8CDE6B00D14476 /* LifelineWidgetSmall.swift in Sources */,
+				645DDA322B8BDDE500F712E4 /* WidgetExtensionLiveActivity.swift in Sources */,
+				645B0B2A2B8CDA5B00D14476 /* LifeStats.swift in Sources */,
+				645DDA302B8BDDE500F712E4 /* WidgetExtensionBundle.swift in Sources */,
+				645B0B312B8CE78500D14476 /* LifelineWidgetMedium.swift in Sources */,
+				645DDA492B8BE3F500F712E4 /* SharedAppStorage.swift in Sources */,
+				645DDA442B8BE0D800F712E4 /* LifelineProgressView.swift in Sources */,
+				645B0B2D2B8CDD6B00D14476 /* AppIntent.swift in Sources */,
+				645DDA432B8BDF5500F712E4 /* LifelineView.swift in Sources */,
+				645DDA342B8BDDE500F712E4 /* WidgetExtension.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -295,6 +451,11 @@
 			isa = PBXTargetDependency;
 			target = 6424703D2B8B3B1900951547 /* Lifeline */;
 			targetProxy = 642470592B8B3B1B00951547 /* PBXContainerItemProxy */;
+		};
+		645DDA3B2B8BDDE600F712E4 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 645DDA272B8BDDE500F712E4 /* WidgetExtensionExtension */;
+			targetProxy = 645DDA3A2B8BDDE600F712E4 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -421,8 +582,10 @@
 		642470632B8B3B1B00951547 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Lifeline/Lifeline.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Lifeline/Preview Content\"";
@@ -450,8 +613,10 @@
 		642470642B8B3B1B00951547 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Lifeline/Lifeline.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Lifeline/Preview Content\"";
@@ -552,6 +717,62 @@
 			};
 			name = Release;
 		};
+		645DDA3E2B8BDDE600F712E4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = WidgetExtensionExtension.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 8SREYL8WVJ;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = WidgetExtension/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = WidgetExtension;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.vladz.lifeline.Lifeline.ProgressExtension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		645DDA3F2B8BDDE600F712E4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = WidgetExtensionExtension.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 8SREYL8WVJ;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = WidgetExtension/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = WidgetExtension;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.vladz.lifeline.Lifeline.ProgressExtension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -587,6 +808,15 @@
 			buildConfigurations = (
 				642470692B8B3B1B00951547 /* Debug */,
 				6424706A2B8B3B1B00951547 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		645DDA402B8BDDE600F712E4 /* Build configuration list for PBXNativeTarget "WidgetExtensionExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				645DDA3E2B8BDDE600F712E4 /* Debug */,
+				645DDA3F2B8BDDE600F712E4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
