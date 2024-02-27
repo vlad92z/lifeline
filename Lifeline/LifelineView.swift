@@ -10,16 +10,18 @@ import SwiftUI
 struct LifelineView: View {
     
     let birthday: Date
+    let lifeExpectancy: Int
     
     var body: some View {
-        let stats = LifeStats.generate(from: birthday)
+        let stats = LifeStats.generate(from: birthday,
+                                       lifeExpectancy: lifeExpectancy)
         HStack {
             Text("Progress: \(stats.progress)%").bold().font(.title2)
             Text("\(stats.yearsLeft) years or " +
                  "\(stats.weeksLeft) weeks left").italic()
         }
         
-        LifelineProgressView(remaining: stats.age / Double(LifeStats.lifeExpectancy))
+        LifelineProgressView(remaining: stats.age / Double(lifeExpectancy))
             .frame(height: 4)
         HStack {
             Text("Days spent")
@@ -38,5 +40,5 @@ struct LifelineView: View {
     dateComponents.year = -25
 
     let before = calendar.date(byAdding: dateComponents, to: now)
-    return LifelineView(birthday: before ?? Date.distantPast)
+    return LifelineView(birthday: before ?? Date.distantPast, lifeExpectancy: 83)
 }

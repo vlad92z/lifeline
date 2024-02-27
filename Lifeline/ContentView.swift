@@ -7,14 +7,15 @@
 
 import SwiftUI
 import ActivityKit
+import WidgetKit
 
 struct ContentView: View {
     @State private var activity: Activity<WidgetExtensionAttributes>? = nil
     @State private var birthday = Date()
-    @SharedAppStorage("selectedDate") var storedBirthday = Date().timeIntervalSince1970
+    @State private var lifeExpectancy = 83
     @AppStorage("showOnLockScreen") private var showOnLockScreen = false
-    
-    let lifeExpectancy = 83
+    @SharedAppStorage("lifeExpectancy") var storedLifeExpectancy = 83
+    @SharedAppStorage("selectedDate") var storedBirthday = Date().timeIntervalSince1970
     
     var age: Double {
         let now = Date()
@@ -41,48 +42,82 @@ struct ContentView: View {
     var body: some View {
         VStack {
             
-                VStack {
-                    Text("Lifeline")
-                        .font(.largeTitle)
-                        .fontWeight(.bold)
-                        .padding(.top, 10)
-                        .padding(.bottom, 20)
-                    LifelineView(birthday: birthday)
-                    
-                    Text("Your age is \(String(format: "%.2f", age)) years")
-                        .bold()
-                        .font(.title3)
-                        .padding(EdgeInsets(top: 60, leading: 0, bottom: 0, trailing: 0))
-                    DatePicker("Birthday", selection: $birthday, displayedComponents: .date)
-                        .datePickerStyle(WheelDatePickerStyle())
-                        .labelsHidden()
-                        .onChange(of: birthday) {
-                            storedBirthday = birthday.timeIntervalSince1970
-                        }
-                    HStack {
-                        Image(systemName: "lock")
-                        Toggle("Show on lock screen", isOn: $showOnLockScreen)
-                                        .onAppear {
-                                            updateLockScreen()
+            VStack {
+                Text("Lifeline")
+                    .font(.largeTitle)
+                    .fontWeight(.bold)
+                    .padding(.top, 10)
+                    .padding(.bottom, 20)
+                LifelineView(birthday: birthday, lifeExpectancy: lifeExpectancy)
+                
+                Text("Your age is \(String(format: "%.2f", age)) years")
+                    .bold()
+                    .font(.title3)
+                    .padding(EdgeInsets(top: 60, leading: 0, bottom: 0, trailing: 0))
+                DatePicker("Birthday", selection: $birthday, displayedComponents: .date)
+                    .datePickerStyle(WheelDatePickerStyle())
+                    .labelsHidden()
+                    .onChange(of: birthday) {
+                        storedBirthday = birthday.timeIntervalSince1970
+                        WidgetCenter.shared.invalidateConfigurationRecommendations()
+                        WidgetCenter.shared.reloadAllTimelines()
+                        reloadLockScreen()
+                    }
+                VStack(spacing: 0) {
+                            HStack {
+                                Image(systemName: "heart")
+                                Text("Life Expectancy")
+                                Spacer()
+                                TextField("83", value: $lifeExpectancy, formatter: NumberFormatter())
+                                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                                    .padding()
+                                    .keyboardType(.numberPad)
+                                    .frame(width: 100)
+                                    .toolbar {
+                                        ToolbarItem(placement: .keyboard) {
+                                            Button("Done") {
+                                                UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+                                            }
                                         }
-                    }.padding()
-                    
-                    
-                }
-            
-
+                                    }
+                                    .onChange(of: lifeExpectancy) { _, _ in
+                                        storedLifeExpectancy = lifeExpectancy
+                                        WidgetCenter.shared.invalidateConfigurationRecommendations()
+                                        WidgetCenter.shared.reloadAllTimelines()
+                                        reloadLockScreen()
+                                    }
+                            }
+                            
+                            HStack {
+                                Image(systemName: "lock")
+                                Toggle("Show on lock screen", isOn: $showOnLockScreen)
+                                    .onAppear {
+                                        setLockScreen()
+                                    }
+                            }
+                        }
+                        .padding()
+            }
         }.onAppear {
             birthday = Date(timeIntervalSince1970: storedBirthday)
+            lifeExpectancy = storedLifeExpectancy
         }.onChange(of: showOnLockScreen) { _, _ in
-            updateLockScreen()
+            setLockScreen()
         }
     }
     
-    func updateLockScreen() {
+    func setLockScreen() {
         if showOnLockScreen {
             startActivity()
         } else {
             stopActivity()
+        }
+    }
+    
+    func reloadLockScreen() {
+        if showOnLockScreen {
+            stopActivity()
+            startActivity()
         }
     }
     

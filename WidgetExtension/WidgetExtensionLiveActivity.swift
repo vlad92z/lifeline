@@ -16,12 +16,13 @@ struct WidgetExtensionAttributes: ActivityAttributes {
 
 struct WidgetExtensionLiveActivity: Widget {
     @SharedAppStorage("selectedDate") var storedBirthday = Date().timeIntervalSince1970
+    @SharedAppStorage("lifeExpectancy") var lifeExpectancy = 83
     var body: some WidgetConfiguration {
         ActivityConfiguration(for: WidgetExtensionAttributes.self) { context in
             let birthday = Date(timeIntervalSince1970: storedBirthday)
             // Lock screen/banner UI goes here
             VStack {
-                let stats = LifeStats.generate(from: birthday)
+                let stats = LifeStats.generate(from: birthday, lifeExpectancy: lifeExpectancy)
                 HStack {
                     Text("Lifeline Progress: \(stats.progress)%")
                         .font(.title2)
@@ -29,7 +30,7 @@ struct WidgetExtensionLiveActivity: Widget {
                     Spacer()
                 }
                 
-                LifelineProgressView(remaining: stats.age / Double(LifeStats.lifeExpectancy))
+                LifelineProgressView(remaining: stats.age / Double(lifeExpectancy))
                     .frame(height: 4)
                 HStack {
                     Text("Days spent")

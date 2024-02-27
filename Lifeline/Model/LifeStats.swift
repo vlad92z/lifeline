@@ -20,8 +20,6 @@ class LifeStats {
     
     private init() {}
     
-    static let lifeExpectancy = 83
-    
     private static func getAge(from birthday: Date) -> Double {
         let now = Date()
         let ageComponents = Calendar.current.dateComponents(
@@ -37,7 +35,7 @@ class LifeStats {
         return years + months + days
     }
     
-    static func generate(from birthday: Date) -> Stats {
+    static func generate(from birthday: Date, lifeExpectancy: Int) -> Stats {
         let age = getAge(from: birthday)
         
         let yearsLeft = Double(lifeExpectancy) - age

@@ -10,22 +10,16 @@ import SwiftUI
 
 struct Provider: AppIntentTimelineProvider {
     
-    private var birthday: Date {
-        let sharedDefaults = UserDefaults(suiteName: "group.com.vladz.lifeline")
-        let storedBirthday = sharedDefaults?.double(forKey: "selectedDate") ?? 0
-        return Date(timeIntervalSince1970: storedBirthday)
-    }
-    
     func placeholder(in context: Context) -> SimpleEntry {
-        SimpleEntry(date: birthday, widgetFamily: context.family)
+        SimpleEntry(date: Date(), widgetFamily: context.family)
     }
 
     func snapshot(for configuration: ConfigurationAppIntent, in context: Context) async -> SimpleEntry {
-        SimpleEntry(date: birthday, widgetFamily: context.family)
+        SimpleEntry(date: Date(), widgetFamily: context.family)
     }
     
     func timeline(for configuration: ConfigurationAppIntent, in context: Context) async -> Timeline<SimpleEntry> {
-        let entries = [SimpleEntry(date: birthday, widgetFamily: context.family)]
+        let entries = [SimpleEntry(date: Date(), widgetFamily: context.family)]
         return Timeline(entries: entries, policy: .atEnd)
     }
     
@@ -42,12 +36,15 @@ struct SimpleEntry: TimelineEntry {
 struct WidgetExtensionEntryView : View {
     var entry: Provider.Entry
     @SharedAppStorage("selectedDate") var storedBirthday = Date().timeIntervalSince1970
+    @SharedAppStorage("lifeExpectancy") var storedLifeExpectancy = 83
     var body: some View {
         switch entry.widgetFamily {
         case .systemSmall:
-                LifelineWidgetSmall(birthday: Date(timeIntervalSince1970: storedBirthday))
+                LifelineWidgetSmall(birthday: Date(timeIntervalSince1970: storedBirthday),
+                lifeExpectancy: storedLifeExpectancy)
         default:
-            LifelineWidgetMedium(birthday: Date(timeIntervalSince1970: storedBirthday))
+            LifelineWidgetMedium(birthday: Date(timeIntervalSince1970: storedBirthday),
+            lifeExpectancy: storedLifeExpectancy)
         }
         
     }

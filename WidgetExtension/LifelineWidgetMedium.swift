@@ -11,9 +11,11 @@ import WidgetKit
 struct LifelineWidgetMedium: View {
     
     let birthday: Date
+    let lifeExpectancy: Int
     
     var body: some View {
-        let stats = LifeStats.generate(from: birthday)
+        let stats = LifeStats.generate(from: birthday,
+                                       lifeExpectancy: lifeExpectancy)
         HStack {
             Text("Progress: \(stats.progress)%")
                 .font(.title2)
@@ -21,7 +23,7 @@ struct LifelineWidgetMedium: View {
             Spacer()
         }
         
-        LifelineProgressView(remaining: stats.age / Double(LifeStats.lifeExpectancy))
+        LifelineProgressView(remaining: stats.age / Double(lifeExpectancy))
             .frame(height: 4)
         HStack {
             Text("Days spent")
@@ -53,7 +55,7 @@ struct LifelineWidgetMediumPreviews: PreviewProvider {
   static var previews: some View {
       
     VStack {
-        LifelineWidgetMedium(birthday: pastDate)
+        LifelineWidgetMedium(birthday: pastDate, lifeExpectancy: 83)
     }
     .containerBackground(.fill.tertiary, for: .widget)
     .previewContext(WidgetPreviewContext(family: .systemMedium))
