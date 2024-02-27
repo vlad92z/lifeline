@@ -11,46 +11,50 @@ import SwiftUI
 
 struct WidgetExtensionAttributes: ActivityAttributes {
     public struct ContentState: Codable, Hashable {
-        // Dynamic stateful properties about your activity go here!
-        var emoji: String
     }
-
-    // Fixed non-changing properties about your activity go here!
-    var name: String
 }
 
 struct WidgetExtensionLiveActivity: Widget {
+    @SharedAppStorage("selectedDate") var storedBirthday = Date().timeIntervalSince1970
     var body: some WidgetConfiguration {
         ActivityConfiguration(for: WidgetExtensionAttributes.self) { context in
+            let birthday = Date(timeIntervalSince1970: storedBirthday)
             // Lock screen/banner UI goes here
             VStack {
-                Text("Hello \(context.state.emoji)")
-            }
-            .activityBackgroundTint(Color.cyan)
-            .activitySystemActionForegroundColor(Color.black)
+                let stats = LifeStats.generate(from: birthday)
+                HStack {
+                    Text("Lifeline Progress: \(stats.progress)%")
+                        .font(.title2)
+                        .fontWeight(.bold)
+                    Spacer()
+                }
+                
+                LifelineProgressView(remaining: stats.age / Double(LifeStats.lifeExpectancy))
+                    .frame(height: 4)
+                HStack {
+                    Text("Days spent")
+                    Text("\(stats.daysSpent)").bold()
+                    Spacer()
+                    Text("Days left")
+                    Text("\(stats.daysLeft)").bold()
+                }
+                Spacer()
+                HStack {
+                    Text("\(stats.yearsLeft) years or " +
+                         "\(stats.weeksLeft) weeks left").italic()
+                }
+            }.padding()
+            .activityBackgroundTint(Color.black.opacity(0.7))
 
         } dynamicIsland: { context in
             DynamicIsland {
-                // Expanded UI goes here.  Compose the expanded UI through
-                // various regions, like leading/trailing/center/bottom
-                DynamicIslandExpandedRegion(.leading) {
-                    Text("Leading")
-                }
-                DynamicIslandExpandedRegion(.trailing) {
-                    Text("Trailing")
-                }
-                DynamicIslandExpandedRegion(.bottom) {
-                    Text("Bottom \(context.state.emoji)")
-                    // more content
-                }
+                DynamicIslandExpandedRegion(.leading) {}
+                DynamicIslandExpandedRegion(.trailing) {}
+                DynamicIslandExpandedRegion(.bottom) {}
             } compactLeading: {
-                Text("L")
             } compactTrailing: {
-                Text("T \(context.state.emoji)")
             } minimal: {
-                Text(context.state.emoji)
             }
-            .widgetURL(URL(string: "http://www.apple.com"))
             .keylineTint(Color.red)
         }
     }
@@ -58,23 +62,18 @@ struct WidgetExtensionLiveActivity: Widget {
 
 extension WidgetExtensionAttributes {
     fileprivate static var preview: WidgetExtensionAttributes {
-        WidgetExtensionAttributes(name: "World")
+        WidgetExtensionAttributes()
     }
 }
 
 extension WidgetExtensionAttributes.ContentState {
-    fileprivate static var smiley: WidgetExtensionAttributes.ContentState {
-        WidgetExtensionAttributes.ContentState(emoji: "😀")
-     }
-     
-     fileprivate static var starEyes: WidgetExtensionAttributes.ContentState {
-         WidgetExtensionAttributes.ContentState(emoji: "🤩")
+     fileprivate static var content: WidgetExtensionAttributes.ContentState {
+         WidgetExtensionAttributes.ContentState()
      }
 }
 
 #Preview("Notification", as: .content, using: WidgetExtensionAttributes.preview) {
    WidgetExtensionLiveActivity()
 } contentStates: {
-    WidgetExtensionAttributes.ContentState.smiley
-    WidgetExtensionAttributes.ContentState.starEyes
+    WidgetExtensionAttributes.ContentState.content
 }

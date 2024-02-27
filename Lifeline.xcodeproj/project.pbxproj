@@ -20,6 +20,7 @@
 		645B0B2D2B8CDD6B00D14476 /* AppIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 645B0B2B2B8CDD6B00D14476 /* AppIntent.swift */; };
 		645B0B2F2B8CDE6B00D14476 /* LifelineWidgetSmall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 645B0B2E2B8CDE6B00D14476 /* LifelineWidgetSmall.swift */; };
 		645B0B312B8CE78500D14476 /* LifelineWidgetMedium.swift in Sources */ = {isa = PBXBuildFile; fileRef = 645B0B302B8CE78500D14476 /* LifelineWidgetMedium.swift */; };
+		645B0B322B8CF6BC00D14476 /* WidgetExtensionLiveActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 645DDA312B8BDDE500F712E4 /* WidgetExtensionLiveActivity.swift */; };
 		645DDA062B8BD4AE00F712E4 /* LifelineProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 645DDA052B8BD4AE00F712E4 /* LifelineProgressView.swift */; };
 		645DDA2B2B8BDDE500F712E4 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 645DDA2A2B8BDDE500F712E4 /* WidgetKit.framework */; };
 		645DDA2D2B8BDDE500F712E4 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 645DDA2C2B8BDDE500F712E4 /* SwiftUI.framework */; };
@@ -401,6 +402,7 @@
 				645B0B292B8CDA5B00D14476 /* LifeStats.swift in Sources */,
 				645B0B2C2B8CDD6B00D14476 /* AppIntent.swift in Sources */,
 				642470422B8B3B1A00951547 /* LifelineApp.swift in Sources */,
+				645B0B322B8CF6BC00D14476 /* WidgetExtensionLiveActivity.swift in Sources */,
 				645DDA062B8BD4AE00F712E4 /* LifelineProgressView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -592,6 +594,7 @@
 				DEVELOPMENT_TEAM = 8SREYL8WVJ;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSSupportsLiveActivities = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -623,6 +626,7 @@
 				DEVELOPMENT_TEAM = 8SREYL8WVJ;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSSupportsLiveActivities = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

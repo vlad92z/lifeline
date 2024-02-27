@@ -56,7 +56,7 @@ struct WidgetExtensionEntryView : View {
 struct WidgetExtension: Widget {
     let kind: String = "WidgetExtension"
 
-    var body: some WidgetConfiguration {
+    var body: some WidgetConfiguration { 
         AppIntentConfiguration(kind: kind, intent: ConfigurationAppIntent.self, provider: Provider()) { entry in
             WidgetExtensionEntryView(entry: entry)
                 .containerBackground(.fill.tertiary, for: .widget)
