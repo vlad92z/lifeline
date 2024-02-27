@@ -1,5 +1,5 @@
 //
-//  ProgressView.swift
+//  LifelineProgressView.swift
 //  Lifeline
 //
 //  Created by Vlad Z on 25/02/2024.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ProgressView: View {
+struct LifelineProgressView: View {
     
     let remaining: Double
     
@@ -33,7 +33,7 @@ struct ProgressView: View {
 }
 
 #Preview {
-    ProgressView(remaining: 0.7)
+    LifelineProgressView(remaining: 0.7)
         .frame(height: 4)
         .previewLayout(.sizeThatFits)
 }

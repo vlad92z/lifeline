@@ -6,11 +6,13 @@
 //
 
 import SwiftUI
+import ActivityKit
 
 struct ContentView: View {
-
+    @State private var activity: Activity<WidgetExtensionAttributes>? = nil
     @State private var birthday = Date()
-    @AppStorage("selectedDate") var storedBirthday = Date().timeIntervalSince1970
+    @SharedAppStorage("selectedDate") var storedBirthday = Date().timeIntervalSince1970
+    @AppStorage("showOnLockScreen") private var showOnLockScreen = false
     
     let lifeExpectancy = 83
     
@@ -38,36 +40,62 @@ struct ContentView: View {
     
     var body: some View {
         VStack {
-            ScrollView {
+            
                 VStack {
                     Text("Lifeline")
                         .font(.largeTitle)
                         .fontWeight(.bold)
                         .padding(.top, 10)
                         .padding(.bottom, 20)
-                    let timeLeft = timeLeft
-                    Text("You have \(timeLeft.yearsLeft) years, " +
-                         "\(timeLeft.weeksLeft) weeks or " +
-                         "\(timeLeft.percentageLeft)% left")
-                    ProgressView(remaining: age / Double(lifeExpectancy))
-                        .frame(height: 4)
-                    Divider()
-
-                    Text("Your birthday").padding(.top, 40)
+                    LifelineView(birthday: birthday)
+                    
+                    Text("Your age is \(String(format: "%.2f", age)) years")
+                        .bold()
+                        .font(.title3)
+                        .padding(EdgeInsets(top: 60, leading: 0, bottom: 0, trailing: 0))
                     DatePicker("Birthday", selection: $birthday, displayedComponents: .date)
                         .datePickerStyle(WheelDatePickerStyle())
                         .labelsHidden()
                         .onChange(of: birthday) {
                             storedBirthday = birthday.timeIntervalSince1970
                         }
-
-                    Text("Your age is \(String(format: "%.2f", age)) years")
-                        .padding()
+                    HStack {
+                        Image(systemName: "lock")
+                        Toggle("Show on lock screen", isOn: $showOnLockScreen)
+                                        .onAppear {
+                                            updateLockScreen()
+                                        }
+                    }.padding()
+                    
+                    
                 }
-            }
+            
 
         }.onAppear {
             birthday = Date(timeIntervalSince1970: storedBirthday)
+        }.onChange(of: showOnLockScreen) { _, _ in
+            updateLockScreen()
+        }
+    }
+    
+    func updateLockScreen() {
+        if showOnLockScreen {
+            startActivity()
+        } else {
+            stopActivity()
+        }
+    }
+    
+    func startActivity() {
+        let attr = WidgetExtensionAttributes()
+        let state = WidgetExtensionAttributes.ContentState()
+        activity = try? Activity<WidgetExtensionAttributes>.request(attributes: attr, contentState: state)
+    }
+    
+    func stopActivity() {
+        let state = WidgetExtensionAttributes.ContentState()
+        Task {
+            await activity?.end(using: state, dismissalPolicy: .immediate)
         }
     }
 }
