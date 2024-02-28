@@ -30,10 +30,11 @@
 		645DDA382B8BDDE600F712E4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 645DDA372B8BDDE600F712E4 /* Assets.xcassets */; };
 		645DDA3C2B8BDDE600F712E4 /* WidgetExtensionExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 645DDA282B8BDDE500F712E4 /* WidgetExtensionExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		645DDA422B8BDF5500F712E4 /* LifelineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 645DDA412B8BDF5500F712E4 /* LifelineView.swift */; };
-		645DDA432B8BDF5500F712E4 /* LifelineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 645DDA412B8BDF5500F712E4 /* LifelineView.swift */; };
-		645DDA442B8BE0D800F712E4 /* LifelineProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 645DDA052B8BD4AE00F712E4 /* LifelineProgressView.swift */; };
 		645DDA482B8BE3F500F712E4 /* SharedAppStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 645DDA472B8BE3F500F712E4 /* SharedAppStorage.swift */; };
 		645DDA492B8BE3F500F712E4 /* SharedAppStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 645DDA472B8BE3F500F712E4 /* SharedAppStorage.swift */; };
+		64703A022B8F354500380D5C /* TextBubble.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64703A012B8F354500380D5C /* TextBubble.swift */; };
+		64703A032B8F354500380D5C /* TextBubble.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64703A012B8F354500380D5C /* TextBubble.swift */; };
+		64703A042B8F357500380D5C /* LifelineProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 645DDA052B8BD4AE00F712E4 /* LifelineProgressView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -102,6 +103,7 @@
 		645DDA452B8BE23700F712E4 /* WidgetExtensionExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = WidgetExtensionExtension.entitlements; sourceTree = "<group>"; };
 		645DDA462B8BE25500F712E4 /* Lifeline.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Lifeline.entitlements; sourceTree = "<group>"; };
 		645DDA472B8BE3F500F712E4 /* SharedAppStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedAppStorage.swift; sourceTree = "<group>"; };
+		64703A012B8F354500380D5C /* TextBubble.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextBubble.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -165,15 +167,13 @@
 		642470402B8B3B1A00951547 /* Lifeline */ = {
 			isa = PBXGroup;
 			children = (
+				64703A002B8F34D100380D5C /* Views */,
 				645B0B272B8CBAB000D14476 /* Model */,
 				645DDA462B8BE25500F712E4 /* Lifeline.entitlements */,
 				642470412B8B3B1A00951547 /* LifelineApp.swift */,
-				642470432B8B3B1A00951547 /* ContentView.swift */,
+				645DDA472B8BE3F500F712E4 /* SharedAppStorage.swift */,
 				642470452B8B3B1A00951547 /* Assets.xcassets */,
 				642470472B8B3B1A00951547 /* Preview Content */,
-				645DDA052B8BD4AE00F712E4 /* LifelineProgressView.swift */,
-				645DDA412B8BDF5500F712E4 /* LifelineView.swift */,
-				645DDA472B8BE3F500F712E4 /* SharedAppStorage.swift */,
 			);
 			path = Lifeline;
 			sourceTree = "<group>";
@@ -233,6 +233,17 @@
 				645B0B302B8CE78500D14476 /* LifelineWidgetMedium.swift */,
 			);
 			path = WidgetExtension;
+			sourceTree = "<group>";
+		};
+		64703A002B8F34D100380D5C /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				642470432B8B3B1A00951547 /* ContentView.swift */,
+				645DDA052B8BD4AE00F712E4 /* LifelineProgressView.swift */,
+				645DDA412B8BDF5500F712E4 /* LifelineView.swift */,
+				64703A012B8F354500380D5C /* TextBubble.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -404,6 +415,7 @@
 				642470422B8B3B1A00951547 /* LifelineApp.swift in Sources */,
 				645B0B322B8CF6BC00D14476 /* WidgetExtensionLiveActivity.swift in Sources */,
 				645DDA062B8BD4AE00F712E4 /* LifelineProgressView.swift in Sources */,
+				64703A022B8F354500380D5C /* TextBubble.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -434,10 +446,10 @@
 				645DDA302B8BDDE500F712E4 /* WidgetExtensionBundle.swift in Sources */,
 				645B0B312B8CE78500D14476 /* LifelineWidgetMedium.swift in Sources */,
 				645DDA492B8BE3F500F712E4 /* SharedAppStorage.swift in Sources */,
-				645DDA442B8BE0D800F712E4 /* LifelineProgressView.swift in Sources */,
 				645B0B2D2B8CDD6B00D14476 /* AppIntent.swift in Sources */,
-				645DDA432B8BDF5500F712E4 /* LifelineView.swift in Sources */,
+				64703A042B8F357500380D5C /* LifelineProgressView.swift in Sources */,
 				645DDA342B8BDDE500F712E4 /* WidgetExtension.swift in Sources */,
+				64703A032B8F354500380D5C /* TextBubble.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

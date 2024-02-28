@@ -15,20 +15,26 @@ struct LifelineView: View {
     var body: some View {
         let stats = LifeStats.generate(from: birthday,
                                        lifeExpectancy: lifeExpectancy)
-        HStack {
-            Text("Progress: \(stats.progress)%").bold().font(.title2)
-            Text("\(stats.yearsLeft) years or " +
-                 "\(stats.weeksLeft) weeks left").italic()
-        }
-        
         LifelineProgressView(remaining: stats.age / Double(lifeExpectancy))
             .frame(height: 4)
+            .overlay(GeometryReader { geo in
+                let xOffset = geo.size.width * Double(stats.progress)/100 - 20
+                TextBubble(text: "\(stats.progress)%")
+                    .offset(x: max(xOffset, 5), y: -35)
+                        })
         HStack {
             Text("Days spent")
             Text("\(stats.daysSpent)").bold()
             Spacer()
             Text("Days left")
             Text("\(stats.daysLeft)").bold()
+        }
+        HStack {
+            Text("Weeks spent")
+            Text("\(stats.weeksLeft)").bold()
+            Spacer()
+            Text("Weeks left")
+            Text("\(stats.weeksLeft)").bold()
         }
     }
 }
@@ -40,5 +46,5 @@ struct LifelineView: View {
     dateComponents.year = -25
 
     let before = calendar.date(byAdding: dateComponents, to: now)
-    return LifelineView(birthday: before ?? Date.distantPast, lifeExpectancy: 83)
+    return LifelineView(birthday: before ?? Date.distantPast, lifeExpectancy: 100)
 }

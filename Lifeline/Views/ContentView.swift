@@ -47,7 +47,7 @@ struct ContentView: View {
                     .font(.largeTitle)
                     .fontWeight(.bold)
                     .padding(.top, 10)
-                    .padding(.bottom, 20)
+                    .padding(.bottom, 40)
                 LifelineView(birthday: birthday, lifeExpectancy: lifeExpectancy)
                 
                 Text("Your age is \(String(format: "%.2f", age)) years")
@@ -97,7 +97,7 @@ struct ContentView: View {
                             }
                         }
                         .padding()
-            }
+            }.padding()
         }.onAppear {
             birthday = Date(timeIntervalSince1970: storedBirthday)
             lifeExpectancy = storedLifeExpectancy
