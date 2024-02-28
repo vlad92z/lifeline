@@ -50,10 +50,15 @@ struct ContentView: View {
                     .padding(.bottom, 40)
                 LifelineView(birthday: birthday, lifeExpectancy: lifeExpectancy)
                 
-                Text("Your age is \(String(format: "%.2f", age)) years")
-                    .bold()
-                    .font(.title3)
-                    .padding(EdgeInsets(top: 60, leading: 0, bottom: 0, trailing: 0))
+                HStack {
+                    Text("Age: ")
+                        .font(.title3)
+                    Text("\(String(format: "%.2f", age)) years")
+                        .bold()
+                        .font(.title3)
+                }.padding(EdgeInsets(top: 60, leading: 0, bottom: 0, trailing: 0))
+                
+                    
                 DatePicker("Birthday", selection: $birthday, displayedComponents: .date)
                     .datePickerStyle(WheelDatePickerStyle())
                     .labelsHidden()
@@ -70,9 +75,9 @@ struct ContentView: View {
                                 Spacer()
                                 TextField("83", value: $lifeExpectancy, formatter: NumberFormatter())
                                     .textFieldStyle(RoundedBorderTextFieldStyle())
-                                    .padding()
+                                    .padding(EdgeInsets(top: 0, leading: 0, bottom: 10, trailing: 0))
                                     .keyboardType(.numberPad)
-                                    .frame(width: 100)
+                                    .frame(width: 60)
                                     .toolbar {
                                         ToolbarItem(placement: .keyboard) {
                                             Button("Done") {
@@ -80,6 +85,7 @@ struct ContentView: View {
                                             }
                                         }
                                     }
+                                    .padding(0)
                                     .onChange(of: lifeExpectancy) { _, _ in
                                         storedLifeExpectancy = lifeExpectancy
                                         WidgetCenter.shared.invalidateConfigurationRecommendations()

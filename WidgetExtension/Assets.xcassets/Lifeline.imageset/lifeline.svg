@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Created with Vectornator (http://vectornator.io/) -->
+<svg height="100%" stroke-miterlimit="10" style="fill-rule:nonzero;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;" version="1.1" viewBox="0 0 180 180" width="100%" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:vectornator="http://vectornator.io" xmlns:xlink="http://www.w3.org/1999/xlink">
+<defs/>
+<clipPath id="ArtboardFrame">
+<rect height="180" width="180" x="0" y="0"/>
+</clipPath>
+<g clip-path="url(#ArtboardFrame)" id="Layer-1" vectornator:layerName="Layer 1">
+<path d="M-13.469-19.6938L193.469-19.6938L193.469 190.457L-13.469 190.457L-13.469-19.6938Z" fill="#ffffff" fill-rule="nonzero" opacity="1" stroke="none" vectornator:layerName="Rectangle 4"/>
+<g opacity="1" vectornator:layerName="Group 1">
+<path d="M17.4839 133.109C17.4839 131.82 18.5287 130.775 19.8176 130.775L160.182 130.775C161.471 130.775 162.516 131.82 162.516 133.109L162.516 133.109C162.516 134.398 161.471 135.442 160.182 135.442L19.8176 135.442C18.5287 135.442 17.4839 134.398 17.4839 133.109L17.4839 133.109Z" fill="#0f2c4b" fill-opacity="0.64676" fill-rule="nonzero" opacity="1" stroke="none" vectornator:layerName="Rectangle 1"/>
+<path d="M17.4839 133.109C17.4839 131.82 18.5287 130.775 19.8176 130.775L69.8565 130.775C71.1453 130.775 72.1901 131.82 72.1901 133.109L72.1901 133.109C72.1901 134.398 71.1453 135.442 69.8565 135.442L19.8176 135.442C18.5287 135.442 17.4839 134.398 17.4839 133.109L17.4839 133.109Z" fill="#d8007b" fill-rule="nonzero" opacity="1" stroke="none" vectornator:layerName="Rectangle 3"/>
+</g>
+<path d="M99.9192 264.483L110.082 264.483L110.082 274.845L99.9192 274.845L99.9192 264.483Z" fill="#0f2c4b" fill-opacity="0.64676" fill-rule="nonzero" opacity="1" stroke="none" vectornator:layerName="Rectangle 2"/>
+<g fill="#d8007b" opacity="1" stroke="none" vectornator:layerName="Text 1">
+<path d="M35.784 111.048L65.52 111.048L65.52 104.064L44.64 104.064L44.64 61.656L35.784 61.656L35.784 111.048Z"/>
+<path d="M72.936 111.048L81.288 111.048L81.288 73.968L72.936 73.968L72.936 111.048ZM72.936 67.848L81.36 67.848L81.36 60.288L72.936 60.288L72.936 67.848Z"/>
+<path d="M93.6 111.048L101.736 111.048L101.736 80.448L109.872 80.448L109.872 73.968L101.736 73.968L101.736 70.224C101.736 65.832 103.896 64.032 107.784 64.032C109.944 64.032 111.528 64.32 112.536 64.536L112.536 58.992C111.168 58.416 108.864 57.84 105.552 57.84C98.568 57.84 93.6 61.368 93.6 69.36L93.6 73.968L88.272 73.968L88.272 80.448L93.6 80.448L93.6 111.048Z"/>
+<path d="M132.984 111.696C139.248 111.696 143.568 109.896 146.088 108.24L146.088 102.48C142.848 104.136 139.392 105.216 134.64 105.216C127.584 105.216 123.624 102.48 123.12 94.776L147.312 94.776L147.312 91.32C147.312 79.512 142.56 73.392 131.616 73.392C122.184 73.392 114.624 79.512 114.624 91.968L114.624 92.976C114.624 104.712 120.672 111.696 132.984 111.696ZM131.472 79.512C136.296 79.512 138.888 82.104 138.888 89.088L123.12 89.088C123.696 81.528 127.656 79.512 131.472 79.512Z"/>
+</g>
+</g>
+</svg>

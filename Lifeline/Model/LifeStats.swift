@@ -14,6 +14,7 @@ class LifeStats {
         weeksLeft: Int,
         daysLeft: Int,
         progress: Int,
+        weeksSpent: Int,
         daysSpent: Int,
         age: Double
     )
@@ -44,8 +45,9 @@ class LifeStats {
         
         let ageInt = Int(age)
         let yearsLeftInt = Int(yearsLeft)
+        let weeksSpent = Int(age * 52)
         let weeksLeft = Int(yearsLeft * 52)
         let percentage = 100 * ageInt / lifeExpectancy
-        return (yearsLeftInt, weeksLeft, daysLeft, percentage, daysSpent, age)
+        return (yearsLeftInt, weeksLeft, daysLeft, percentage, weeksSpent, daysSpent, age)
     }
 }

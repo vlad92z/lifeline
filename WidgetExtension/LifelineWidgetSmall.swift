@@ -16,27 +16,35 @@ struct LifelineWidgetSmall: View {
     var body: some View {
         let stats = LifeStats.generate(from: birthday,
                                        lifeExpectancy: lifeExpectancy)
+        
         VStack {
-            Text("Progress: \(stats.progress)%").bold()
-            LifelineProgressView(remaining: stats.age / Double(lifeExpectancy))
-                .frame(height: 4)
-            Spacer()
-            
-            Text("Remaining").bold()
             HStack {
-                Text("Weeks:")
+                Image("Lifeline")
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(width: 40, height: 40)
+                Spacer()
+                Text("Weeks").frame(width: 70, height: 40, alignment: .center).font(.title3)
+                Spacer()
+            }.padding(0)
+            
+            HStack {
+                Text("Spent").font(.callout)
+                Spacer()
+                Text("\(stats.weeksSpent)").bold()
+            }
+            HStack {
+                Text("Left").font(.callout)
+                Spacer()
                 Text("\(stats.weeksLeft)").bold()
             }
-            HStack {
-                Text("Days:")
-                Text("\(stats.daysLeft)").bold()
-            }
+            MarkerProgressView(progress: stats.age / Double(lifeExpectancy)).padding(EdgeInsets(top: 25, leading: 0, bottom: 0, trailing: 0))
         }
     }
 }
 
 struct WidgetViewPreviews: PreviewProvider {
-
+    
     static var pastDate: Date {
         let now = Date()
         let calendar = Calendar.current
@@ -47,13 +55,13 @@ struct WidgetViewPreviews: PreviewProvider {
         return maybeDate ?? Date.distantPast
     }
     
-  static var previews: some View {
-      
-    VStack {
-        LifelineWidgetSmall(birthday: pastDate, lifeExpectancy: 83)
+    static var previews: some View {
+        
+        VStack {
+            LifelineWidgetSmall(birthday: pastDate, lifeExpectancy: 83)
+        }
+        .containerBackground(.fill.tertiary, for: .widget)
+        .previewContext(WidgetPreviewContext(family: .systemSmall))
     }
-    .containerBackground(.fill.tertiary, for: .widget)
-    .previewContext(WidgetPreviewContext(family: .systemSmall))
-  }
 }
 

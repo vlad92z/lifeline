@@ -17,14 +17,13 @@ struct LifelineWidgetMedium: View {
         let stats = LifeStats.generate(from: birthday,
                                        lifeExpectancy: lifeExpectancy)
         HStack {
-            Text("Progress: \(stats.progress)%")
-                .font(.title2)
-                .fontWeight(.bold)
+            Image("Lifeline")
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+                .frame(width: 40, height: 40)
             Spacer()
-        }
-        
-        LifelineProgressView(remaining: stats.age / Double(lifeExpectancy))
-            .frame(height: 4)
+        }.padding(0)
+        MarkerProgressView(progress: stats.age / Double(lifeExpectancy))
         HStack {
             Text("Days spent")
             Text("\(stats.daysSpent)").bold()

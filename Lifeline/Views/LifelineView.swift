@@ -15,13 +15,7 @@ struct LifelineView: View {
     var body: some View {
         let stats = LifeStats.generate(from: birthday,
                                        lifeExpectancy: lifeExpectancy)
-        LifelineProgressView(remaining: stats.age / Double(lifeExpectancy))
-            .frame(height: 4)
-            .overlay(GeometryReader { geo in
-                let xOffset = geo.size.width * Double(stats.progress)/100 - 20
-                TextBubble(text: "\(stats.progress)%")
-                    .offset(x: max(xOffset, 5), y: -35)
-                        })
+        MarkerProgressView(progress: stats.age / Double(lifeExpectancy))
         HStack {
             Text("Days spent")
             Text("\(stats.daysSpent)").bold()
@@ -31,7 +25,7 @@ struct LifelineView: View {
         }
         HStack {
             Text("Weeks spent")
-            Text("\(stats.weeksLeft)").bold()
+            Text("\(stats.weeksSpent)").bold()
             Spacer()
             Text("Weeks left")
             Text("\(stats.weeksLeft)").bold()

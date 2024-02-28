@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct LifelineProgressView: View {
+struct ProgressBarView: View {
     
     let remaining: Double
     
@@ -33,7 +33,7 @@ struct LifelineProgressView: View {
 }
 
 #Preview {
-    LifelineProgressView(remaining: 0.7)
+    ProgressBarView(remaining: 0.7)
         .frame(height: 4)
         .previewLayout(.sizeThatFits)
 }
