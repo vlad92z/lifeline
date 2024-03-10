@@ -25,7 +25,6 @@ struct WidgetExtensionLiveActivity: Widget {
     var body: some WidgetConfiguration {
         ActivityConfiguration(for: WidgetExtensionAttributes.self) { context in
             let birthday = Date(timeIntervalSince1970: storedBirthday)
-            // Lock screen/banner UI goes here
             VStack {
                 let stats = LifeStats.generate(from: birthday, lifeExpectancy: lifeExpectancy)
                 HStack {
@@ -49,9 +48,6 @@ struct WidgetExtensionLiveActivity: Widget {
                          "\(stats.weeksLeft) weeks left").italic()
                 }
             }.padding()
-                .activityBackgroundTint(
-                    Color(UIColor.systemBackground).opacity(0.7)
-                )
             
         } dynamicIsland: { context in
             DynamicIsland {
