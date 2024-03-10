@@ -16,7 +16,7 @@ struct MarkerProgressView: View {
     }
     var body: some View {
         ProgressBarView(remaining: progress)
-            .frame(height: 4)
+            .frame(height: 2)
             .overlay(GeometryReader { geo in
                 let xOffset = geo.size.width * progress - 20
                 TextBubble(text: "\(progressInt)%")

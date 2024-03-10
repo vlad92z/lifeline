@@ -15,6 +15,11 @@ struct WidgetExtensionAttributes: ActivityAttributes {
 }
 
 struct WidgetExtensionLiveActivity: Widget {
+    private let dateFormatter: DateFormatter = {
+            let formatter = DateFormatter()
+            formatter.dateFormat = "MMM d, hh:mm"
+            return formatter
+        }()
     @SharedAppStorage("selectedDate") var storedBirthday = Date().timeIntervalSince1970
     @SharedAppStorage("lifeExpectancy") var lifeExpectancy = 83
     var body: some WidgetConfiguration {
@@ -44,7 +49,9 @@ struct WidgetExtensionLiveActivity: Widget {
                          "\(stats.weeksLeft) weeks left").italic()
                 }
             }.padding()
-                .activityBackgroundTint(Color.black.opacity(0.7))
+                .activityBackgroundTint(
+                    Color(UIColor.systemBackground).opacity(0.7)
+                )
             
         } dynamicIsland: { context in
             DynamicIsland {

@@ -13,6 +13,12 @@ struct LifelineWidgetMedium: View {
     let birthday: Date
     let lifeExpectancy: Int
     
+    private let dateFormatter: DateFormatter = {
+            let formatter = DateFormatter()
+            formatter.dateFormat = "MMM d, hh:mm"
+            return formatter
+        }()
+    
     var body: some View {
         let stats = LifeStats.generate(from: birthday,
                                        lifeExpectancy: lifeExpectancy)

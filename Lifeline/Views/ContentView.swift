@@ -12,13 +12,13 @@ import WidgetKit
 struct ContentView: View {
     @State private var activity: Activity<WidgetExtensionAttributes>? = nil
     @State private var birthday = Date()
+    @State private var now = Date()
     @State private var lifeExpectancy = 83
     @AppStorage("showOnLockScreen") private var showOnLockScreen = false
     @SharedAppStorage("lifeExpectancy") var storedLifeExpectancy = 83
     @SharedAppStorage("selectedDate") var storedBirthday = Date().timeIntervalSince1970
     
     var age: Double {
-        let now = Date()
         let ageComponents = Calendar.current.dateComponents(
             [.year, .month, .day],
             from: birthday,
@@ -39,7 +39,14 @@ struct ContentView: View {
         return (yearsLeft, weeksLeft, percentage)
     }
     
+    private let dateFormatter: DateFormatter = {
+            let formatter = DateFormatter()
+            formatter.dateFormat = "MMM d, hh:mm"
+            return formatter
+        }()
+    
     var body: some View {
+        let expectancy = max(lifeExpectancy, 1)
         VStack {
             
             VStack {
@@ -47,8 +54,10 @@ struct ContentView: View {
                     .font(.largeTitle)
                     .fontWeight(.bold)
                     .padding(.top, 10)
-                    .padding(.bottom, 40)
-                LifelineView(birthday: birthday, lifeExpectancy: lifeExpectancy)
+                    .padding(.bottom, 30)
+                
+                
+                LifelineView(birthday: birthday, lifeExpectancy: expectancy)
                 
                 HStack {
                     Text("Age: ")
@@ -87,7 +96,7 @@ struct ContentView: View {
                                     }
                                     .padding(0)
                                     .onChange(of: lifeExpectancy) { _, _ in
-                                        storedLifeExpectancy = lifeExpectancy
+                                        storedLifeExpectancy = max(lifeExpectancy, 1)
                                         WidgetCenter.shared.invalidateConfigurationRecommendations()
                                         WidgetCenter.shared.reloadAllTimelines()
                                         reloadLockScreen()
@@ -105,6 +114,12 @@ struct ContentView: View {
                         .padding()
             }.padding()
         }.onAppear {
+            let foreground = UIApplication.willEnterForegroundNotification
+            NotificationCenter.default.addObserver(forName: foreground,
+                                                   object: nil,
+                                                   queue: .main) { _ in
+                self.now = Date()
+            }
             birthday = Date(timeIntervalSince1970: storedBirthday)
             lifeExpectancy = storedLifeExpectancy
         }.onChange(of: showOnLockScreen) { _, _ in
