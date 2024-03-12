@@ -10,11 +10,9 @@ import ActivityKit
 import WidgetKit
 
 struct ContentView: View {
-    @State private var activity: Activity<WidgetExtensionAttributes>? = nil
     @State private var birthday = Date()
     @State private var now = Date()
     @State private var lifeExpectancy = 83
-    @AppStorage("showOnLockScreen") private var showOnLockScreen = false
     @SharedAppStorage("lifeExpectancy") var storedLifeExpectancy = 83
     @SharedAppStorage("selectedDate") var storedBirthday = Date().timeIntervalSince1970
     
@@ -75,7 +73,6 @@ struct ContentView: View {
                         storedBirthday = birthday.timeIntervalSince1970
                         WidgetCenter.shared.invalidateConfigurationRecommendations()
                         WidgetCenter.shared.reloadAllTimelines()
-                        reloadLockScreen()
                     }
                 VStack(spacing: 0) {
                             HStack {
@@ -99,15 +96,6 @@ struct ContentView: View {
                                         storedLifeExpectancy = max(lifeExpectancy, 1)
                                         WidgetCenter.shared.invalidateConfigurationRecommendations()
                                         WidgetCenter.shared.reloadAllTimelines()
-                                        reloadLockScreen()
-                                    }
-                            }
-                            
-                            HStack {
-                                Image(systemName: "lock")
-                                Toggle("Show on lock screen", isOn: $showOnLockScreen)
-                                    .onAppear {
-                                        setLockScreen()
                                     }
                             }
                         }
@@ -122,36 +110,6 @@ struct ContentView: View {
             }
             birthday = Date(timeIntervalSince1970: storedBirthday)
             lifeExpectancy = storedLifeExpectancy
-        }.onChange(of: showOnLockScreen) { _, _ in
-            setLockScreen()
-        }
-    }
-    
-    func setLockScreen() {
-        if showOnLockScreen {
-            startActivity()
-        } else {
-            stopActivity()
-        }
-    }
-    
-    func reloadLockScreen() {
-        if showOnLockScreen {
-            stopActivity()
-            startActivity()
-        }
-    }
-    
-    func startActivity() {
-        let attr = WidgetExtensionAttributes()
-        let state = WidgetExtensionAttributes.ContentState()
-        activity = try? Activity<WidgetExtensionAttributes>.request(attributes: attr, contentState: state)
-    }
-    
-    func stopActivity() {
-        let state = WidgetExtensionAttributes.ContentState()
-        Task {
-            await activity?.end(using: state, dismissalPolicy: .immediate)
         }
     }
 }
