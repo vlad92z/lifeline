@@ -27,6 +27,7 @@ struct LifelineWidgetMedium: View {
                 .resizable()
                 .aspectRatio(contentMode: .fit)
                 .frame(width: 40, height: 40)
+                .cornerRadius(9)
             Spacer()
         }.padding(0)
         MarkerProgressView(progress: stats.age / Double(lifeExpectancy))

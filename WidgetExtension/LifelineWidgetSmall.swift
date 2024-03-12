@@ -23,6 +23,7 @@ struct LifelineWidgetSmall: View {
                     .resizable()
                     .aspectRatio(contentMode: .fit)
                     .frame(width: 40, height: 40)
+                    .cornerRadius(9)
                 Spacer()
                 Text("Weeks").frame(width: 70, height: 40, alignment: .center).font(.title3)
                 Spacer()
