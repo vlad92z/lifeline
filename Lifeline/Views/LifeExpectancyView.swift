@@ -9,7 +9,7 @@ import SwiftUI
 import ActivityKit
 import WidgetKit
 
-struct ContentView: View {
+struct LifeExpectancyView: View {
     @State private var birthday = Date()
     @State private var now = Date()
     @State private var lifeExpectancy = 83
@@ -116,6 +116,6 @@ struct ContentView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        LifeExpectancyView()
     }
 }

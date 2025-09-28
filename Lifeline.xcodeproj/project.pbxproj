@@ -10,7 +10,7 @@
 		6400C7952B8F813700B11CBC /* MarkerProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6400C7942B8F813700B11CBC /* MarkerProgressView.swift */; };
 		6400C7962B8F813700B11CBC /* MarkerProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6400C7942B8F813700B11CBC /* MarkerProgressView.swift */; };
 		642470422B8B3B1A00951547 /* LifelineApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 642470412B8B3B1A00951547 /* LifelineApp.swift */; };
-		642470442B8B3B1A00951547 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 642470432B8B3B1A00951547 /* ContentView.swift */; };
+		642470442B8B3B1A00951547 /* LifeExpectancyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 642470432B8B3B1A00951547 /* LifeExpectancyView.swift */; };
 		642470462B8B3B1A00951547 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 642470452B8B3B1A00951547 /* Assets.xcassets */; };
 		642470492B8B3B1A00951547 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 642470482B8B3B1A00951547 /* Preview Assets.xcassets */; };
 		642470532B8B3B1B00951547 /* LifelineTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 642470522B8B3B1B00951547 /* LifelineTests.swift */; };
@@ -36,6 +36,15 @@
 		64703A032B8F354500380D5C /* TextBubble.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64703A012B8F354500380D5C /* TextBubble.swift */; };
 		64703A042B8F357500380D5C /* ProgressBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 645DDA052B8BD4AE00F712E4 /* ProgressBarView.swift */; };
 		64703A052B8F4A1300380D5C /* LifelineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 645DDA412B8BDF5500F712E4 /* LifelineView.swift */; };
+		648B31622E8995F200380C60 /* TabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 648B31602E8995EA00380C60 /* TabBarView.swift */; };
+		648B31662E8998E900380C60 /* ExportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 648B31642E8998E700380C60 /* ExportView.swift */; };
+		648B316A2E899A6B00380C60 /* HealthKitAuthorizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 648B31692E899A6400380C60 /* HealthKitAuthorizer.swift */; };
+		648B316B2E899A6B00380C60 /* HealthKitAuthorizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 648B31692E899A6400380C60 /* HealthKitAuthorizer.swift */; };
+		648B316D2E899A9E00380C60 /* HealthKitReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 648B316C2E899A9A00380C60 /* HealthKitReader.swift */; };
+		648B316E2E899A9E00380C60 /* HealthKitReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 648B316C2E899A9A00380C60 /* HealthKitReader.swift */; };
+		648B31702E899D7B00380C60 /* HealthKitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 648B316F2E899D7700380C60 /* HealthKitManager.swift */; };
+		648B31712E899D7B00380C60 /* HealthKitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 648B316F2E899D7700380C60 /* HealthKitManager.swift */; };
+		648B31752E89A26300380C60 /* CSV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 648B31732E89A26100380C60 /* CSV.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -80,7 +89,7 @@
 		6400C7942B8F813700B11CBC /* MarkerProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkerProgressView.swift; sourceTree = "<group>"; };
 		6424703E2B8B3B1A00951547 /* Lifeline.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Lifeline.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		642470412B8B3B1A00951547 /* LifelineApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LifelineApp.swift; sourceTree = "<group>"; };
-		642470432B8B3B1A00951547 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		642470432B8B3B1A00951547 /* LifeExpectancyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LifeExpectancyView.swift; sourceTree = "<group>"; };
 		642470452B8B3B1A00951547 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		642470482B8B3B1A00951547 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		6424704E2B8B3B1B00951547 /* LifelineTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LifelineTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -105,6 +114,12 @@
 		645DDA462B8BE25500F712E4 /* Lifeline.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Lifeline.entitlements; sourceTree = "<group>"; };
 		645DDA472B8BE3F500F712E4 /* SharedAppStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedAppStorage.swift; sourceTree = "<group>"; };
 		64703A012B8F354500380D5C /* TextBubble.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextBubble.swift; sourceTree = "<group>"; };
+		648B31602E8995EA00380C60 /* TabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarView.swift; sourceTree = "<group>"; };
+		648B31642E8998E700380C60 /* ExportView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExportView.swift; sourceTree = "<group>"; };
+		648B31692E899A6400380C60 /* HealthKitAuthorizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthKitAuthorizer.swift; sourceTree = "<group>"; };
+		648B316C2E899A9A00380C60 /* HealthKitReader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthKitReader.swift; sourceTree = "<group>"; };
+		648B316F2E899D7700380C60 /* HealthKitManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthKitManager.swift; sourceTree = "<group>"; };
+		648B31732E89A26100380C60 /* CSV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CSV.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -168,6 +183,7 @@
 		642470402B8B3B1A00951547 /* Lifeline */ = {
 			isa = PBXGroup;
 			children = (
+				648B31672E899A4100380C60 /* Data */,
 				64703A002B8F34D100380D5C /* Views */,
 				645B0B272B8CBAB000D14476 /* Model */,
 				645DDA462B8BE25500F712E4 /* Lifeline.entitlements */,
@@ -238,13 +254,50 @@
 		64703A002B8F34D100380D5C /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				642470432B8B3B1A00951547 /* ContentView.swift */,
+				648B31632E8998D900380C60 /* ExportView */,
+				648B31602E8995EA00380C60 /* TabBarView.swift */,
+				642470432B8B3B1A00951547 /* LifeExpectancyView.swift */,
 				645DDA052B8BD4AE00F712E4 /* ProgressBarView.swift */,
 				645DDA412B8BDF5500F712E4 /* LifelineView.swift */,
 				64703A012B8F354500380D5C /* TextBubble.swift */,
 				6400C7942B8F813700B11CBC /* MarkerProgressView.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		648B31632E8998D900380C60 /* ExportView */ = {
+			isa = PBXGroup;
+			children = (
+				648B31642E8998E700380C60 /* ExportView.swift */,
+			);
+			path = ExportView;
+			sourceTree = "<group>";
+		};
+		648B31672E899A4100380C60 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				648B31722E89A24100380C60 /* CSV */,
+				648B31682E899A5900380C60 /* HealthKit */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		648B31682E899A5900380C60 /* HealthKit */ = {
+			isa = PBXGroup;
+			children = (
+				648B316F2E899D7700380C60 /* HealthKitManager.swift */,
+				648B316C2E899A9A00380C60 /* HealthKitReader.swift */,
+				648B31692E899A6400380C60 /* HealthKitAuthorizer.swift */,
+			);
+			path = HealthKit;
+			sourceTree = "<group>";
+		};
+		648B31722E89A24100380C60 /* CSV */ = {
+			isa = PBXGroup;
+			children = (
+				648B31732E89A26100380C60 /* CSV.swift */,
+			);
+			path = CSV;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -409,13 +462,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				645DDA422B8BDF5500F712E4 /* LifelineView.swift in Sources */,
-				642470442B8B3B1A00951547 /* ContentView.swift in Sources */,
+				642470442B8B3B1A00951547 /* LifeExpectancyView.swift in Sources */,
+				648B31752E89A26300380C60 /* CSV.swift in Sources */,
 				645DDA482B8BE3F500F712E4 /* SharedAppStorage.swift in Sources */,
 				645B0B292B8CDA5B00D14476 /* LifeStats.swift in Sources */,
+				648B31662E8998E900380C60 /* ExportView.swift in Sources */,
 				645B0B2C2B8CDD6B00D14476 /* AppIntent.swift in Sources */,
 				642470422B8B3B1A00951547 /* LifelineApp.swift in Sources */,
+				648B316A2E899A6B00380C60 /* HealthKitAuthorizer.swift in Sources */,
 				645DDA062B8BD4AE00F712E4 /* ProgressBarView.swift in Sources */,
 				64703A022B8F354500380D5C /* TextBubble.swift in Sources */,
+				648B31622E8995F200380C60 /* TabBarView.swift in Sources */,
+				648B316D2E899A9E00380C60 /* HealthKitReader.swift in Sources */,
+				648B31702E899D7B00380C60 /* HealthKitManager.swift in Sources */,
 				6400C7952B8F813700B11CBC /* MarkerProgressView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -447,9 +506,12 @@
 				645DDA302B8BDDE500F712E4 /* WidgetExtensionBundle.swift in Sources */,
 				6400C7962B8F813700B11CBC /* MarkerProgressView.swift in Sources */,
 				645B0B312B8CE78500D14476 /* LifelineWidgetMedium.swift in Sources */,
+				648B316B2E899A6B00380C60 /* HealthKitAuthorizer.swift in Sources */,
+				648B31712E899D7B00380C60 /* HealthKitManager.swift in Sources */,
 				645DDA492B8BE3F500F712E4 /* SharedAppStorage.swift in Sources */,
 				645B0B2D2B8CDD6B00D14476 /* AppIntent.swift in Sources */,
 				64703A042B8F357500380D5C /* ProgressBarView.swift in Sources */,
+				648B316E2E899A9E00380C60 /* HealthKitReader.swift in Sources */,
 				645DDA342B8BDDE500F712E4 /* WidgetExtension.swift in Sources */,
 				64703A032B8F354500380D5C /* TextBubble.swift in Sources */,
 			);
@@ -608,17 +670,20 @@
 				DEVELOPMENT_TEAM = 8SREYL8WVJ;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHealthClinicalHealthRecordsShareUsageDescription = "Lifeline needs access to your health data to export it to a csv file.";
+				INFOPLIST_KEY_NSHealthShareUsageDescription = "To export data to a file, Lifeline requires read access to your health data.";
 				INFOPLIST_KEY_NSSupportsLiveActivities = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 18.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.vladz.lifeline.Lifeline;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -640,17 +705,20 @@
 				DEVELOPMENT_TEAM = 8SREYL8WVJ;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHealthClinicalHealthRecordsShareUsageDescription = "Lifeline needs access to your health data to export it to a csv file.";
+				INFOPLIST_KEY_NSHealthShareUsageDescription = "To export data to a file, Lifeline requires read access to your health data.";
 				INFOPLIST_KEY_NSSupportsLiveActivities = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 18.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.vladz.lifeline.Lifeline;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -668,7 +736,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 8SREYL8WVJ;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.6;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.vladz.lifeline.LifelineTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -688,7 +756,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 8SREYL8WVJ;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.6;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.vladz.lifeline.LifelineTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -707,6 +775,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 8SREYL8WVJ;
 				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.6;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.vladz.lifeline.LifelineUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -725,6 +794,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 8SREYL8WVJ;
 				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.6;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.vladz.lifeline.LifelineUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -748,6 +818,7 @@
 				INFOPLIST_FILE = WidgetExtension/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = WidgetExtension;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 18.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -776,6 +847,7 @@
 				INFOPLIST_FILE = WidgetExtension/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = WidgetExtension;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 18.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
