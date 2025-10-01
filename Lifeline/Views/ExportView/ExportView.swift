@@ -6,55 +6,68 @@
 //
 import SwiftUI
 
+extension URL: @retroactive Identifiable {
+    public var id: String {
+        return absoluteString
+    }
+}
+
 struct ExportView: View {
     
     @State private var showMail = false
     @State private var csvData = Data()
-    @State var url = URL(string: "https://www.hackingwithswift.com")!
+    @State var url: URL?
+    
+    @State private var shareURL: URL?
+    @State private var showShare = false
+    @State private var start = Date()
+    @State private var end = Date()
+
     
     var body: some View {
         VStack {
-            Button(action: {
+            HStack {
+                DatePicker("Start", selection: $start, displayedComponents: [.date]).padding()
+                DatePicker("End", selection: $end, displayedComponents: [.date]).padding()
+            }
+            
+            Button("Request Access") {
                 Task {
                     let reader = HealthKitReader()
                     reader.requestAuthorization()
                 }
-            }) {
-                Text("Access")
             }
-            Button(action: {
+            Button("Share CSV") {
                 Task {
-                    let reader = HealthKitReader()
-                    let startDate = Calendar.current.date(byAdding: .day, value: -7, to: Date())!
-                    let endDate = Date()
-                    let kcal = try await reader.caloriesConsumed(from: startDate, to: endDate)
-                    print(kcal)
+                    shareURL = await csvTempURL()
                 }
-            }) {
-                Text("Export")
             }
-            Button(action: {
-                url = csvTempURL()
-            }) {
-                Text("Data")
-            }
-            ShareLink(item: url, message: Text("Learn Swift here!"))
+            .sheet(item: $shareURL, onDismiss: {
+                
+            }, content: { shareURL in
+                ActivityViewController(url: shareURL)
+            })
         }
     }
     
-    private func csvTempURL() -> URL {
-        let headers = ["date","calories","note"]
-        let rows: [[String: Any]] = [
-            ["date": "2025-09-28", "calories": 2213, "note": "rest day"],
-            ["date": "2025-09-27", "calories": 2450, "note": "leg day, protein shake"],
-        ]
-        csvData = CSV.make(headers: headers, rows: rows)
-        let url = FileManager.default.temporaryDirectory.appendingPathComponent("export.csv")
-        do {
-            try csvData.write(to: url, options: .atomic)
-        } catch {
-            print(error.localizedDescription)
+    private func csvTempURL() async -> URL {
+        let writer = CSVWriter()
+        return await writer.write(metrics: [.activeEnergyKcal,
+                                            .basalEnergyKcal,
+                                            .dietaryEnergyKcal,
+                                            .dietaryProtein,
+                                            .dietarySugar,
+                                            .restingHeartRate],
+                                  date: Date())
+    }
+    
+    struct ActivityViewController: UIViewControllerRepresentable {
+        let url: URL
+        func makeUIViewController(context: Context) -> UIActivityViewController {
+            UIActivityViewController(activityItems: [url], applicationActivities: nil)
         }
-        return url
+        
+        func updateUIViewController(_ uiViewController: UIActivityViewController, context: Context) {
+        }
     }
 }
