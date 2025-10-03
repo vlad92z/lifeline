@@ -23,6 +23,17 @@ struct ExportView: View {
     @State private var start = Date()
     @State private var end = Date()
 
+    @State private var basalKcal: Bool = true
+    @State private var activeKcal: Bool = true
+    @State private var totalKcal: Bool = false
+    @State private var protein: Bool = true
+    @State private var sugar: Bool = true
+    @State private var restingHR: Bool = true
+    @State private var bodyWeight: Bool = true
+    
+    var metricsToExport: [HealthMetric] = [.dietaryEnergyKcal]
+    
+    var compoindMetricsToExport: [CompoundHealthMetric] = []
     
     var body: some View {
         VStack {
@@ -37,6 +48,7 @@ struct ExportView: View {
                     reader.requestAuthorization()
                 }
             }
+            
             Button("Share CSV") {
                 Task {
                     shareURL = await csvTempURL()
@@ -52,13 +64,9 @@ struct ExportView: View {
     
     private func csvTempURL() async -> URL {
         let writer = CSVWriter()
-        return await writer.write(metrics: [.activeEnergyKcal,
-                                            .basalEnergyKcal,
-                                            .dietaryEnergyKcal,
-                                            .dietaryProtein,
-                                            .dietarySugar,
-                                            .restingHeartRate],
-                                  date: Date())
+        return await writer.write(metrics: metricsToExport,
+                                  from: start,
+                                  to: end)
     }
     
     struct ActivityViewController: UIViewControllerRepresentable {

@@ -35,3 +35,28 @@ struct CSV {
         return Data(csvString.utf8)
     }
 }
+
+struct CSVStream {
+    private static func escape(_ s: String) -> String {
+        let needsQuotes = s.contains { $0 == "," || $0 == "\n" || $0 == "\"" }
+        let body = s.replacingOccurrences(of: "\"", with: "\"\"")
+        return needsQuotes ? "\"\(body)\"" : body
+    }
+
+    static func header(_ headers: [String]) -> Data {
+        let line = headers.map(escape).joined(separator: ",") + "\n"
+        return Data(line.utf8)
+    }
+
+    static func line(headers: [String], row: [String: Any]) -> Data {
+        let cells = headers.map { key -> String in
+            if let v = row[key] {
+                return escape(String(describing: v))
+            } else {
+                return ""
+            }
+        }
+        let line = cells.joined(separator: ",") + "\n"
+        return Data(line.utf8)
+    }
+}
