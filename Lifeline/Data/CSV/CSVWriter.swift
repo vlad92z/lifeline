@@ -9,6 +9,14 @@ import Foundation
 
 struct CSVWriter {
     
+    let formatter = DateFormatter()
+    
+    init() {
+        formatter.timeZone = .current
+        formatter.dateStyle = .medium
+        formatter.timeStyle = .none
+    }
+    
     func write(metrics: [HealthMetric], date: Date) async -> URL {
         let headers = metrics.map { $0.name }
         let reader = HealthKitReader()
@@ -44,18 +52,14 @@ struct CSVWriter {
         // Write header once
         handle.write(CSVStream.header(headers))
 
-        // Iterate days once
-        var day = calendar.startOfDay(for: start)
-        let endDay = calendar.startOfDay(for: end)
-        let df = ISO8601DateFormatter()
-        df.formatOptions = [.withFullDate]
+        var current = start
 
-        while day <= endDay {
+        while current <= end {
             // Fetch values for this day only (reader should be efficient internally)
-            let valuesByMetric = try? await reader.dailyValues(for: metrics, date: day)
+            let valuesByMetric = try? await reader.dailyValues(for: metrics, date: current)
 
             // Map to row keyed by headers (date + metric names)
-            var row: [String: Any] = ["date": df.string(from: day)]
+            var row: [String: Any] = ["date": formatter.string(from: current)]
             if let valuesByMetric = valuesByMetric {
                 for (metric, value) in valuesByMetric {
                     row[metric.name] = value
@@ -66,8 +70,8 @@ struct CSVWriter {
             handle.write(CSVStream.line(headers: headers, row: row))
 
             // Next day
-            guard let next = calendar.date(byAdding: .day, value: 1, to: day) else { break }
-            day = next
+            guard let next = calendar.date(byAdding: .day, value: 1, to: current) else { break }
+            current = next
         }
 
         return url

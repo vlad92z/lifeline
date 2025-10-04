@@ -16,8 +16,8 @@ extension URL: @retroactive Identifiable {
 struct ExportView: View {
         
     @State private var shareURL: URL?
-    @State private var start = Date()
-    @State private var end = Date()
+    @State private var start = Calendar.current.startOfDay(for: Date())
+    @State private var end = Calendar.current.startOfDay(for: Date())
     @State private var metricsToExport = Set<HealthMetric.ID>()
     @State private var isExporting = false
     
@@ -118,6 +118,8 @@ struct ExportView: View {
     private func csvTempURL() async -> URL {
         let writer = CSVWriter()
         let metrics = HealthMetric.metrics(from: metricsToExport)
+        print(start)
+        print(end)
         return await writer.write(metrics: metrics, from: start, to: end)
     }
     
