@@ -29,31 +29,6 @@ struct HealthKitReader {
         }
     }
     
-    /// Fetch total calories consumed between two dates.
-    /// - Parameters:
-    ///   - start: Start of the interval (inclusive)
-    ///   - end: End of the interval (exclusive)
-    /// - Returns: Total kilocalories (kcal) as a Double
-    func caloriesConsumed(from start: Date, to end: Date) async throws -> Double {
-        guard let type = HKObjectType.quantityType(forIdentifier: .dietaryEnergyConsumed) else { return 0 }
-        
-        let predicate = HKQuery.predicateForSamples(withStart: start, end: end, options: .strictStartDate)
-        
-        return try await withCheckedThrowingContinuation { cont in
-            let query = HKStatisticsQuery(quantityType: type,
-                                          quantitySamplePredicate: predicate,
-                                          options: .cumulativeSum) { _, stats, error in
-                if let error = error {
-                    return cont.resume(throwing: error)
-                }
-                let unit = HKUnit.kilocalorie()
-                let total = stats?.sumQuantity()?.doubleValue(for: unit) ?? 0
-                cont.resume(returning: total)
-            }
-            healthKit.execute(query)
-        }
-    }
-    
     // MARK: - Daily Series via StatisticsCollectionQuery (efficient)
     /// Fetch a daily series for a single metric between two dates (inclusive start, exclusive end)
     func dailySeries(for metric: HealthMetric, from start: Date, to end: Date) async throws -> [Date: Double] {
@@ -157,47 +132,4 @@ struct HealthKitReader {
         }
         return responseMap
     }
-    
-    //  // MARK: - CSV Export (line-by-line, memory efficient)
-    //  /// Writes a CSV with header: date,<metric.id>... One row per day from start..<(end)
-    //  func exportDailyCSV(to url: URL, metrics: [HealthMetric], from start: Date, to end: Date) async throws {
-    //      // Ensure we have data ready
-    //      let allSeries = try await dailyValue(for: metrics, from: start, to: end)
-    //
-    //      // Prepare file for streaming writes
-    //      FileManager.default.createFile(atPath: url.path, contents: nil, attributes: nil)
-    //      let handle = try FileHandle(forWritingTo: url)
-    //      defer { try? handle.close() }
-    //
-    //      // Header
-    //      let header = (["date"] + metrics.map { $0.id }).joined(separator: ",") + "\n"
-    //      if let data = header.data(using: .utf8) { handle.write(data) }
-    //
-    //      // Iterate days once, build each row on the fly
-    //      var day = Calendar.current.startOfDay(for: start)
-    //      let endDay = Calendar.current.startOfDay(for: end)
-    //      let cal = Calendar.current
-    //
-    //      while day < endDay {
-    //          var fields: [String] = []
-    //          // ISO8601 date (no time)
-    //          let df = ISO8601DateFormatter()
-    //          df.formatOptions = [.withFullDate]
-    //          fields.append(df.string(from: day))
-    //
-    //          for m in metrics {
-    //              if let v = allSeries[m]?[day] {
-    //                  // Use plain formatting; caller can post-process locale if needed
-    //                  fields.append(String(format: "%.4f", v))
-    //              } else {
-    //                  fields.append("") // empty if no value for that day
-    //              }
-    //          }
-    //
-    //          let line = fields.joined(separator: ",") + "\n"
-    //          if let data = line.data(using: .utf8) { handle.write(data) }
-    //
-    //          day = cal.date(byAdding: .day, value: 1, to: day)!
-    //      }
-    //  }
 }
