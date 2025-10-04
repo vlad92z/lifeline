@@ -7,6 +7,8 @@
 
 enum HealthMetric: String, Codable, CaseIterable, Identifiable {
     
+    case sleepingTemp = "Sleeping Wrist Temperature (°C)"
+    case bodyFat = "Body Fat (%)"
     case activeEnergyKcal = "Active Energy (kcal)"
     case basalEnergyKcal = "Basal Energy (kcal)"
     case dietaryEnergyKcal = "Consumed (kcal)"
@@ -14,6 +16,10 @@ enum HealthMetric: String, Codable, CaseIterable, Identifiable {
     case dietarySugar = "Sugar (g)"
     case restingHeartRate = "Resting HR"
     case bodyMass = "Weight (kg)"
+    case bodyMassIndex = "BMI"
+    case electroDermalActivity = "EDA"
+    case height = "Height (cm)"
+    case leanBodyMass = "Lean Body Mass (kg)"
     
     var name: String {
         return rawValue
