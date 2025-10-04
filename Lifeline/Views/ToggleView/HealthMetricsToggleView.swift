@@ -11,31 +11,23 @@ struct HealthMetricsToggleView: View {
     let categories: [HealthMetricCategory]
     
     @Binding var enabled: Set<HealthMetric.ID>
-    @Environment(\.dismiss) private var dismiss
     
     var body: some View {
-        NavigationStack {
-            Form {
-                ForEach(categories) { category in
-                    ToggleView(
-                        title: category.name,
-                        elements: category.metrics,
-                        advanced: category.advanced,
-                        enabled: $enabled
-                    )
-                }
+        Form {
+            ForEach(categories) { category in
+                ToggleView(
+                    title: category.name,
+                    elements: category.metrics,
+                    advanced: category.advanced,
+                    enabled: $enabled
+                )
             }
-            .navigationTitle(title)
-            .toolbar {
-                ToolbarItem(placement: .topBarTrailing) {
-                    Button("Disable All") {
-                        enabled.removeAll()
-                    }
-                }
-                ToolbarItem(placement: .topBarTrailing) {
-                    Button("Done") {
-                        dismiss()
-                    }
+        }
+        .navigationTitle(title)
+        .toolbar {
+            ToolbarItem(placement: .topBarTrailing) {
+                Button("Disable All") {
+                    enabled.removeAll()
                 }
             }
         }
