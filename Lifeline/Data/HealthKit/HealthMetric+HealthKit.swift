@@ -223,8 +223,11 @@ extension HealthMetric {
             return .meter()
 
         // Time quantities (minutes)
-        case .appleExerciseTime, .appleMoveTime, .appleStandTime, .timeInDaylight:
+        case .appleExerciseTime, .appleMoveTime, .appleStandTime:
             return .minute()
+            
+        case .timeInDaylight:
+            return .second()
 
         // Audio exposure (A-weighted dB)
         case .environmentalAudioExposure, .environmentalSoundReduction, .headphoneAudioExposure:
@@ -303,31 +306,18 @@ extension HealthMetric {
         case .bodyMass, .leanBodyMass, .bodyFat, .bodyMassIndex, .height, .waistCircumference:
             return .mostRecent
 
-        // Counts that accumulate
-        case .stepCount, .swimmingStrokeCount, .flightsClimbed, .pushCount,
-             .numberOfTimesFallen, .numberOfAlcoholicBeverages, .insulinDelivery,
-             .appleSleepingBreathingDisturbances:
-            return .mostRecent
-
         // Distance totals
-        case .distanceCrossCountrySkiing, .distanceCycling, .distanceDownhillSnowSports,
+        case .insulinDelivery, .flightsClimbed, .pushCount, .numberOfTimesFallen, .numberOfAlcoholicBeverages, .appleExerciseTime, .appleMoveTime, .appleStandTime, .timeInDaylight, .swimmingStrokeCount, .distanceCrossCountrySkiing, .distanceCycling, .distanceDownhillSnowSports,
              .distancePaddleSports, .distanceRowing, .distanceSkatingSports,
-             .distanceSwimming, .distanceWalkingRunning, .distanceWheelchair:
-            return .cumulativeSum
-
-        // Time-based durations (minutes)
-        case .appleExerciseTime, .appleMoveTime, .appleStandTime, .timeInDaylight:
+             .distanceSwimming, .distanceWalkingRunning, .distanceWheelchair, .stepCount:
             return .cumulativeSum
 
         // Speeds & rates (averages over the day)
-        case .crossCountrySkiingSpeed, .cyclingSpeed, .paddleSportsSpeed, .rowingSpeed,
+        case .cyclingPower, .runningPower, .cyclingCadence, .crossCountrySkiingSpeed, .cyclingSpeed, .paddleSportsSpeed, .rowingSpeed,
              .runningSpeed, .stairAscentSpeed, .stairDescentSpeed, .walkingSpeed,
-             .underwaterDepth:
+             .underwaterDepth, .appleSleepingBreathingDisturbances:
             return .discreteAverage
-
-        // Power & cadence
-        case .cyclingPower, .runningPower, .cyclingCadence:
-            return .discreteAverage
+            
         case .cyclingFunctionalThresholdPower:
             return .mostRecent
 
