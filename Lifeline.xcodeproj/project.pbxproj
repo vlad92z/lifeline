@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		64007CA12E9160B1007F0940 /* HealthMetricCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64007CA02E9160AC007F0940 /* HealthMetricCategory.swift */; };
 		6400C7952B8F813700B11CBC /* MarkerProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6400C7942B8F813700B11CBC /* MarkerProgressView.swift */; };
 		6400C7962B8F813700B11CBC /* MarkerProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6400C7942B8F813700B11CBC /* MarkerProgressView.swift */; };
 		642470422B8B3B1A00951547 /* LifelineApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 642470412B8B3B1A00951547 /* LifelineApp.swift */; };
@@ -92,6 +93,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		64007CA02E9160AC007F0940 /* HealthMetricCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthMetricCategory.swift; sourceTree = "<group>"; };
 		6400C7942B8F813700B11CBC /* MarkerProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkerProgressView.swift; sourceTree = "<group>"; };
 		6424703E2B8B3B1A00951547 /* Lifeline.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Lifeline.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		642470412B8B3B1A00951547 /* LifelineApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LifelineApp.swift; sourceTree = "<group>"; };
@@ -309,6 +311,7 @@
 		648B31682E899A5900380C60 /* HealthKit */ = {
 			isa = PBXGroup;
 			children = (
+				64007CA02E9160AC007F0940 /* HealthMetricCategory.swift */,
 				643F7F752E9100E9008788E8 /* HealthMetric+ToggleElement.swift */,
 				64A63EE22E8C5CF5002450B0 /* HealthMetric+HealthKit.swift */,
 				64A63EDF2E8C5B48002450B0 /* HealthMetric.swift */,
@@ -494,6 +497,7 @@
 				645DDA422B8BDF5500F712E4 /* LifelineView.swift in Sources */,
 				642470442B8B3B1A00951547 /* LifeExpectancyView.swift in Sources */,
 				648B31752E89A26300380C60 /* CSV.swift in Sources */,
+				64007CA12E9160B1007F0940 /* HealthMetricCategory.swift in Sources */,
 				643F7F6E2E90FC67008788E8 /* ToggleElement.swift in Sources */,
 				64A63EE62E8C65AE002450B0 /* CSVWriter.swift in Sources */,
 				645DDA482B8BE3F500F712E4 /* SharedAppStorage.swift in Sources */,
