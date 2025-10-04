@@ -10,7 +10,7 @@ struct ToggleView<T: ToggleElement>: View {
     let title: String
     let elements: [T]
     let advanced: [T]
-    @State var showAdvanced: Bool = true
+    @State var showAdvanced: Bool = false
     @Binding var enabled: Set<T.ID>
     
     var body: some View {
@@ -22,12 +22,25 @@ struct ToggleView<T: ToggleElement>: View {
                 )
             }
         }
-        Section("Advanced", isExpanded: $showAdvanced) {
-            ForEach(advanced) { element in
-                ToggleRow(
-                    element: element,
-                    isOn: binding(for: element.id)
-                )
+        Section {
+            if showAdvanced {
+                ForEach(advanced) { element in
+                    ToggleRow(
+                        element: element,
+                        isOn: binding(for: element.id)
+                    )
+                }
+            }
+        } header: {
+            HStack {
+                Text("Advanced")
+                Spacer()
+                Button(showAdvanced ? "Hide" : "Show") {
+                    withAnimation(.snappy) { showAdvanced.toggle() }
+                }
+                .font(.footnote.weight(.semibold))
+                .buttonStyle(.plain)
+                .accessibilityLabel("Toggle Advanced")
             }
         }
     }
