@@ -14,12 +14,28 @@ struct ToggleView<T: ToggleElement>: View {
     @Binding var enabled: Set<T.ID>
     
     var body: some View {
-        Section(title) {
+        Section {
             ForEach(elements) { element in
                 ToggleRow(
                     element: element,
                     isOn: binding(for: element.id)
                 )
+            }
+        } header: {
+            HStack {
+                Text(title)
+                Spacer()
+                Button(anySelected ? "All Off" : "All On") {
+                    if anySelected {
+                        // Any selected: turn off all (including advanced)
+                        enabled.subtract(allIDs)
+                    } else {
+                        // None selected: turn on all visible (include advanced only if showing)
+                        enabled.formUnion(visibleIDs)
+                    }
+                }
+                .font(.footnote.weight(.semibold))
+                .accessibilityLabel(anySelected ? "Disable" : "Enable")
             }
         }
         if !advanced.isEmpty {
@@ -40,25 +56,10 @@ struct ToggleView<T: ToggleElement>: View {
                         withAnimation(.snappy) { showAdvanced.toggle() }
                     }
                     .font(.footnote.weight(.semibold))
-                    .buttonStyle(.plain)
                     .accessibilityLabel("Toggle Advanced")
-                    
-                    Button(anySelected ? "All Off" : "All On") {
-                        if anySelected {
-                            // Any selected: turn off all (including advanced)
-                            enabled.subtract(allIDs)
-                        } else {
-                            // None selected: turn on all visible (include advanced only if showing)
-                            enabled.formUnion(visibleIDs)
-                        }
-                    }
-                    .font(.footnote.weight(.semibold))
-                    .buttonStyle(.plain)
-                    .accessibilityLabel(anySelected ? "Turn Off All" : "Turn On All")
                 }
             }
         }
-        
     }
     
     private func binding(for id: T.ID) -> Binding<Bool> {
