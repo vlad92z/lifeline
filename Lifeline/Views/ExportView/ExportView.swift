@@ -18,30 +18,47 @@ struct ExportView: View {
     @State private var shareURL: URL?
     @State private var start = Date()
     @State private var end = Date()
-    
-    @State var metricsToExport =  Set<HealthMetric.ID>()
+    @State private var metricsToExport = Set<HealthMetric.ID>()
+    @State private var isExporting = false
     
     var body: some View {
-        VStack {
-            header
-            ToggleView(elements: HealthMetric.allCases, enabled: $metricsToExport)
-            HStack {
-                DatePicker("Start", selection: $start, displayedComponents: [.date]).padding()
-                DatePicker("End", selection: $end, displayedComponents: [.date]).padding()
+        ZStack {
+            VStack {
+                header
+                ToggleView(elements: HealthMetric.allCases, enabled: $metricsToExport)
+                HStack {
+                    DatePicker("Start", selection: $start, displayedComponents: [.date]).padding()
+                    DatePicker("End", selection: $end, displayedComponents: [.date]).padding()
+                }
+                Button("Share CSV") {
+                    isExporting = true
+                    Task {
+                        let url = await csvTempURL()
+                        await MainActor.run {
+                            shareURL = url
+                            isExporting = false
+                        }
+                    }
+                }
+                .padding()
+                .buttonStyle(.borderedProminent)
+                .disabled(isExporting)
+                .sheet(item: $shareURL, onDismiss: {
+                    
+                }, content: { url in
+                    ActivityViewController(url: url)
+                })
             }
-            Button("Share CSV") {
-                Task {
-                    shareURL = await csvTempURL()
+            if isExporting {
+                ZStack {
+                    Color.black.opacity(0.2).ignoresSafeArea()
+                    ProgressView("Preparing CSV...")
+                        .padding()
+                        .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 12))
                 }
             }
-            .padding()
-            .buttonStyle(.borderedProminent)
-            .sheet(item: $shareURL, onDismiss: {
-                
-            }, content: { url in
-                ActivityViewController(url: url)
-            })
-        }.background(Color(uiColor: .systemGroupedBackground))
+        }
+        .background(Color(uiColor: .systemGroupedBackground))
     }
     
     private var header: some View {
