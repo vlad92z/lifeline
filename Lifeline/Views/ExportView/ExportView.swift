@@ -14,13 +14,8 @@ extension URL: @retroactive Identifiable {
 }
 
 struct ExportView: View {
-    
-    @State private var showMail = false
-    @State private var csvData = Data()
-    @State var url: URL?
-    
+        
     @State private var shareURL: URL?
-    @State private var showShare = false
     @State private var start = Date()
     @State private var end = Date()
     
