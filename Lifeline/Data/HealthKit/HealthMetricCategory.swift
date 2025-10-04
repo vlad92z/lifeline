@@ -4,10 +4,14 @@
 //
 //  Created by Vlad on 04/10/2025.
 //
-struct HealthMetricCategory {
+struct HealthMetricCategory: Identifiable {
     let name: String
     let metrics: [HealthMetric]
     let advanced: [HealthMetric]
+    
+    var id: String {
+        return name
+    }
     
     static let all: [HealthMetricCategory] = [
         HealthMetricCategory(

@@ -6,35 +6,30 @@
 //
 import SwiftUI
 
-struct HealthMetricsToggleView<T: ToggleElement>: View {
+struct HealthMetricsToggleView: View {
     let title: String
-    let elements: [T]
+    let categories: [HealthMetricCategory]
     
-    @Binding var enabled: Set<T.ID>
+    @Binding var enabled: Set<HealthMetric.ID>
     @Environment(\.dismiss) private var dismiss
     
     var body: some View {
         NavigationStack {
-            List {
-                Section {
-                    ForEach(elements) { element in
-                        ToggleRow(
-                            element: element,
-                            isOn: binding(for: element.id)
-                        )
-                    }
+            Form {
+                ForEach(categories) { category in
+                    ToggleView(
+                        title: category.name,
+                        elements: category.metrics,
+                        advanced: category.advanced,
+                        enabled: $enabled
+                    )
                 }
             }
-            .listStyle(.insetGrouped)
             .navigationTitle(title)
             .toolbar {
                 ToolbarItem(placement: .topBarTrailing) {
-                    Button(enabled.isEmpty ? "Turn On All" : "Turn Off All") {
-                        if enabled.isEmpty {
-                            enabled = Set(elements.map { $0.id })
-                        } else {
-                            enabled.removeAll()
-                        }
+                    Button("Turn Off All") {
+                        enabled.removeAll()
                     }
                 }
                 ToolbarItem(placement: .topBarTrailing) {
@@ -46,7 +41,7 @@ struct HealthMetricsToggleView<T: ToggleElement>: View {
         }
     }
     
-    private func binding(for id: T.ID) -> Binding<Bool> {
+    private func binding(for id: HealthMetric.ID) -> Binding<Bool> {
         Binding(
             get: {
                 enabled.contains(id)
@@ -60,6 +55,9 @@ struct HealthMetricsToggleView<T: ToggleElement>: View {
 
 #Preview("ToggleView Example") {
     @Previewable @State var enabledMetrics = Set<HealthMetric.ID>()
-    HealthMetricsToggleView(title: "Select Export Metrics", elements: HealthMetric.allCases, enabled: $enabledMetrics)
+    HealthMetricsToggleView(
+        title: "Select Export Metrics",
+        categories: HealthMetricCategory.all,
+        enabled: $enabledMetrics)
 }
 

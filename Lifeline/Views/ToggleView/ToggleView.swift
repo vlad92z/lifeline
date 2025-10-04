@@ -22,27 +22,43 @@ struct ToggleView<T: ToggleElement>: View {
                 )
             }
         }
-        Section {
-            if showAdvanced {
-                ForEach(advanced) { element in
-                    ToggleRow(
-                        element: element,
-                        isOn: binding(for: element.id)
-                    )
+        if !advanced.isEmpty {
+            Section {
+                if showAdvanced {
+                    ForEach(advanced) { element in
+                        ToggleRow(
+                            element: element,
+                            isOn: binding(for: element.id)
+                        )
+                    }
                 }
-            }
-        } header: {
-            HStack {
-                Text("Advanced")
-                Spacer()
-                Button(showAdvanced ? "Hide" : "Show") {
-                    withAnimation(.snappy) { showAdvanced.toggle() }
+            } header: {
+                HStack {
+                    Text("\(title) (Advanced)")
+                    Spacer()
+                    Button(showAdvanced ? "Hide" : "Show") {
+                        withAnimation(.snappy) { showAdvanced.toggle() }
+                    }
+                    .font(.footnote.weight(.semibold))
+                    .buttonStyle(.plain)
+                    .accessibilityLabel("Toggle Advanced")
+                    
+                    Button(anySelected ? "All Off" : "All On") {
+                        if anySelected {
+                            // Any selected: turn off all (including advanced)
+                            enabled.subtract(allIDs)
+                        } else {
+                            // None selected: turn on all visible (include advanced only if showing)
+                            enabled.formUnion(visibleIDs)
+                        }
+                    }
+                    .font(.footnote.weight(.semibold))
+                    .buttonStyle(.plain)
+                    .accessibilityLabel(anySelected ? "Turn Off All" : "Turn On All")
                 }
-                .font(.footnote.weight(.semibold))
-                .buttonStyle(.plain)
-                .accessibilityLabel("Toggle Advanced")
             }
         }
+        
     }
     
     private func binding(for id: T.ID) -> Binding<Bool> {
@@ -54,6 +70,22 @@ struct ToggleView<T: ToggleElement>: View {
                 if isOn { enabled.insert(id) } else { enabled.remove(id) }
             }
         )
+    }
+    
+    private var allIDs: Set<T.ID> {
+        Set(elements.map(\.id)).union(Set(advanced.map(\.id)))
+    }
+    
+    private var visibleIDs: Set<T.ID> {
+        var ids = Set(elements.map(\.id))
+        if showAdvanced {
+            ids.formUnion(advanced.map(\.id))
+        }
+        return ids
+    }
+    
+    private var anySelected: Bool {
+        !enabled.isDisjoint(with: allIDs)
     }
 }
 

@@ -33,7 +33,10 @@ struct ExportView: View {
                 Spacer()
                 .buttonStyle(.bordered)
                 .sheet(isPresented: $showMetricsSheet) {
-                    HealthMetricsToggleView(title: "Select Export Metrics", elements: HealthMetric.allCases, enabled: $metricsToExport)
+                    HealthMetricsToggleView(
+                        title: "Select Export Metrics",
+                        categories: HealthMetricCategory.all,
+                        enabled: $metricsToExport)
                 }
                 HStack {
                     DatePicker("Start", selection: $start, displayedComponents: [.date]).padding()
