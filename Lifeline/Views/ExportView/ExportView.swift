@@ -21,6 +21,17 @@ struct ExportView: View {
     @State private var metricsToExport = Set<HealthMetric.ID>()
     @State private var isExporting = false
     
+    
+    var selectedText: String {
+        if metricsToExport.isEmpty {
+            return "Tap to select metrics to export"
+        } else {
+            return metricsToExport
+                .sorted()
+                .joined(separator: ", ")
+        }
+    }
+    
     var body: some View {
         NavigationStack {
             ZStack {
@@ -35,12 +46,10 @@ struct ExportView: View {
                         } label: {
                             VStack(alignment: .leading, spacing: 4) {
                                 Text("Select Metrics")
-                                Text(metricsToExport
-                                    .sorted()
-                                    .joined(separator: ", ")
-                                )
-                                .font(.footnote)
-                                .foregroundColor(.secondary)
+                                Text(selectedText)
+                                    .font(.footnote)
+                                    .foregroundColor(.secondary)
+                                    .lineLimit(5)
                             }
                         }
                     }
@@ -81,7 +90,15 @@ struct ExportView: View {
                             .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 12))
                     }
                 }
-            }.navigationTitle("Export")
+            }
+            .navigationTitle("Export")
+            .toolbar {
+                ToolbarItem(placement: .topBarTrailing) {
+                    Button("Request") {
+                        HealthKitReader().requestAuthorization()
+                    }
+                }
+            }
         }
         
     }
