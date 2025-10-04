@@ -30,6 +30,12 @@ struct ExportView: View {
                 Button("Select Metrics") {
                     showMetricsSheet = true
                 }
+                Text(
+                    metricsToExport
+                        .sorted()
+                        .joined(separator: ", ")
+                )
+                
                 Spacer()
                 .buttonStyle(.bordered)
                 .sheet(isPresented: $showMetricsSheet) {
