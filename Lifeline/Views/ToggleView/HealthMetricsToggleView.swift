@@ -28,7 +28,7 @@ struct HealthMetricsToggleView: View {
             .navigationTitle(title)
             .toolbar {
                 ToolbarItem(placement: .topBarTrailing) {
-                    Button("Turn Off All") {
+                    Button("Disable All") {
                         enabled.removeAll()
                     }
                 }
