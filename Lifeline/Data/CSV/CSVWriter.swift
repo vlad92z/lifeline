@@ -59,10 +59,14 @@ struct CSVWriter {
             let valuesByMetric = try? await reader.dailyValues(for: metrics, date: current)
 
             // Map to row keyed by headers (date + metric names)
-            var row: [String: Any] = ["date": formatter.string(from: current)]
+            var row: [String: String?] = ["date": formatter.string(from: current)]
             if let valuesByMetric = valuesByMetric {
                 for (metric, value) in valuesByMetric {
-                    row[metric.name] = value
+                    if let value = value {
+                        row[metric.name] = "\(value)"
+                    } else {
+                        row[metric.name] = nil
+                    }
                 }
             }
 

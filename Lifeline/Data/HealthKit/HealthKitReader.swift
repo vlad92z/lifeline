@@ -31,7 +31,7 @@ struct HealthKitReader {
     
     // MARK: - Convenience Aggregates
     /// Aggregate a metric between two dates (inclusive start, exclusive end)
-    func value(for metric: HealthMetric, from start: Date, to end: Date) async throws -> Double {
+    func value(for metric: HealthMetric, from start: Date, to end: Date) async throws -> Double? {
         let predicate = HKQuery.predicateForSamples(withStart: start, end: end, options: .strictStartDate)
         
         return try await withCheckedThrowingContinuation { continuation in
@@ -45,16 +45,16 @@ struct HealthKitReader {
                     return continuation.resume(throwing: error)
                 }
                 
-                let value: Double
+                let value: Double?
                 switch metric.aggregation {
                 case .cumulativeSum:
-                    value = stats?.sumQuantity()?.doubleValue(for: metric.unit) ?? 0
+                    value = stats?.sumQuantity()?.doubleValue(for: metric.unit)
                 case .discreteAverage:
-                    value = stats?.averageQuantity()?.doubleValue(for: metric.unit) ?? 0
+                    value = stats?.averageQuantity()?.doubleValue(for: metric.unit)
                 case .mostRecent:
-                    value = stats?.mostRecentQuantity()?.doubleValue(for: metric.unit) ?? 0
+                    value = stats?.mostRecentQuantity()?.doubleValue(for: metric.unit)
                 default:
-                    value = -1
+                    value = nil
                 }
                 continuation.resume(returning: value)
             }
@@ -64,20 +64,20 @@ struct HealthKitReader {
     
     /// Convenience: get the aggregate for a metric on a specific calendar day.
     /// Uses the user's current Calendar boundaries (startOfDay..<(startOfDay+1d)).
-    func dailyValue(_ metric: HealthMetric, date: Date) async throws -> Double {
+    func dailyValue(_ metric: HealthMetric, date: Date) async throws -> Double? {
         let start = date
         let end = Calendar.current.date(byAdding: .day, value: 1, to: start)!
         return try await value(for: metric, from: start, to: end)
     }
     
     /// Fetch daily series for multiple metrics efficiently (runs queries in parallel)
-    func dailyValues(for metrics: [HealthMetric], date: Date) async throws -> [HealthMetric: Double] {
-        var responseMap: [HealthMetric: Double] = [:]
-        try await withThrowingTaskGroup(of: (HealthMetric, Double).self) { group in
+    func dailyValues(for metrics: [HealthMetric], date: Date) async throws -> [HealthMetric: Double?] {
+        var responseMap: [HealthMetric: Double?] = [:]
+        try await withThrowingTaskGroup(of: (HealthMetric, Double?).self) { group in
             for metric in metrics {
                 group.addTask {
                     let value = try? await dailyValue(metric, date: date)
-                    return (metric, value ?? 0)
+                    return (metric, value)
                 }
             }
             for try await (metric, value) in group {

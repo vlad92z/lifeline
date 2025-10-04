@@ -48,10 +48,14 @@ struct CSVStream {
         return Data(line.utf8)
     }
 
-    static func line(headers: [String], row: [String: Any]) -> Data {
+    static func line(headers: [String], row: [String: String?]) -> Data {
         let cells = headers.map { key -> String in
             if let v = row[key] {
-                return escape(String(describing: v))
+                if let z = v {
+                    return escape(z)
+                } else {
+                    return ""
+                }
             } else {
                 return ""
             }
