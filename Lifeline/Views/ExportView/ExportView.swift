@@ -5,6 +5,7 @@
 //  Created by Vlad on 28/09/2025.
 //
 import SwiftUI
+import UIKit
 
 extension URL: @retroactive Identifiable {
     public var id: String {
@@ -22,51 +23,48 @@ struct ExportView: View {
     @State private var showShare = false
     @State private var start = Date()
     @State private var end = Date()
-
-    @State private var basalKcal: Bool = true
-    @State private var activeKcal: Bool = true
-    @State private var totalKcal: Bool = false
-    @State private var protein: Bool = true
-    @State private var sugar: Bool = true
-    @State private var restingHR: Bool = true
-    @State private var bodyWeight: Bool = true
     
-    var metricsToExport: [HealthMetric] = [.dietaryEnergyKcal]
-    
-    var compoindMetricsToExport: [CompoundHealthMetric] = []
+    @State var metricsToExport =  Set<HealthMetric.ID>()
     
     var body: some View {
         VStack {
+            header
+            ToggleView(elements: HealthMetric.allCases, enabled: $metricsToExport)
             HStack {
                 DatePicker("Start", selection: $start, displayedComponents: [.date]).padding()
                 DatePicker("End", selection: $end, displayedComponents: [.date]).padding()
             }
-            
-            Button("Request Access") {
-                Task {
-                    let reader = HealthKitReader()
-                    reader.requestAuthorization()
-                }
-            }
-            
             Button("Share CSV") {
                 Task {
                     shareURL = await csvTempURL()
                 }
             }
+            .padding()
+            .buttonStyle(.borderedProminent)
             .sheet(item: $shareURL, onDismiss: {
                 
-            }, content: { shareURL in
-                ActivityViewController(url: shareURL)
+            }, content: { url in
+                ActivityViewController(url: url)
             })
+        }.background(Color(uiColor: .systemGroupedBackground))
+    }
+    
+    private var header: some View {
+        HStack {
+            Spacer()
+            Button("Request Access") {
+                Task {
+                    let reader = HealthKitReader()
+                    reader.requestAuthorization()
+                }
+            }.buttonStyle(.borderedProminent)
         }
     }
     
     private func csvTempURL() async -> URL {
         let writer = CSVWriter()
-        return await writer.write(metrics: metricsToExport,
-                                  from: start,
-                                  to: end)
+        let metrics = HealthMetric.metrics(from: metricsToExport)
+        return await writer.write(metrics: metrics, from: start, to: end)
     }
     
     struct ActivityViewController: UIViewControllerRepresentable {
@@ -79,3 +77,8 @@ struct ExportView: View {
         }
     }
 }
+
+#Preview("Export View") {
+    ExportView()
+}
+

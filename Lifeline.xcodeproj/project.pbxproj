@@ -16,6 +16,10 @@
 		642470532B8B3B1B00951547 /* LifelineTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 642470522B8B3B1B00951547 /* LifelineTests.swift */; };
 		6424705D2B8B3B1B00951547 /* LifelineUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6424705C2B8B3B1B00951547 /* LifelineUITests.swift */; };
 		6424705F2B8B3B1B00951547 /* LifelineUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6424705E2B8B3B1B00951547 /* LifelineUITestsLaunchTests.swift */; };
+		643F7F6E2E90FC67008788E8 /* ToggleElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 643F7F6C2E90FC56008788E8 /* ToggleElement.swift */; };
+		643F7F702E90FCC9008788E8 /* ToggleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 643F7F6F2E90FCC4008788E8 /* ToggleView.swift */; };
+		643F7F742E90FEDE008788E8 /* ToggleRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 643F7F722E90FEDB008788E8 /* ToggleRow.swift */; };
+		643F7F762E9100F2008788E8 /* HealthMetric+ToggleElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 643F7F752E9100E9008788E8 /* HealthMetric+ToggleElement.swift */; };
 		645B0B292B8CDA5B00D14476 /* LifeStats.swift in Sources */ = {isa = PBXBuildFile; fileRef = 645B0B282B8CDA5B00D14476 /* LifeStats.swift */; };
 		645B0B2A2B8CDA5B00D14476 /* LifeStats.swift in Sources */ = {isa = PBXBuildFile; fileRef = 645B0B282B8CDA5B00D14476 /* LifeStats.swift */; };
 		645B0B2C2B8CDD6B00D14476 /* AppIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 645B0B2B2B8CDD6B00D14476 /* AppIntent.swift */; };
@@ -47,7 +51,6 @@
 		64A63EE12E8C5B50002450B0 /* HealthMetric.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64A63EDF2E8C5B48002450B0 /* HealthMetric.swift */; };
 		64A63EE42E8C5CFC002450B0 /* HealthMetric+HealthKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64A63EE22E8C5CF5002450B0 /* HealthMetric+HealthKit.swift */; };
 		64A63EE62E8C65AE002450B0 /* CSVWriter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64A63EE52E8C65AA002450B0 /* CSVWriter.swift */; };
-		64A93EB22E8D7952006F28D3 /* CompoundHealthMetric.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64A93EB12E8D7952006F28D3 /* CompoundHealthMetric.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -100,6 +103,10 @@
 		642470582B8B3B1B00951547 /* LifelineUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LifelineUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6424705C2B8B3B1B00951547 /* LifelineUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LifelineUITests.swift; sourceTree = "<group>"; };
 		6424705E2B8B3B1B00951547 /* LifelineUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LifelineUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		643F7F6C2E90FC56008788E8 /* ToggleElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToggleElement.swift; sourceTree = "<group>"; };
+		643F7F6F2E90FCC4008788E8 /* ToggleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToggleView.swift; sourceTree = "<group>"; };
+		643F7F722E90FEDB008788E8 /* ToggleRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToggleRow.swift; sourceTree = "<group>"; };
+		643F7F752E9100E9008788E8 /* HealthMetric+ToggleElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HealthMetric+ToggleElement.swift"; sourceTree = "<group>"; };
 		645B0B282B8CDA5B00D14476 /* LifeStats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LifeStats.swift; sourceTree = "<group>"; };
 		645B0B2B2B8CDD6B00D14476 /* AppIntent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppIntent.swift; sourceTree = "<group>"; };
 		645B0B2E2B8CDE6B00D14476 /* LifelineWidgetSmall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LifelineWidgetSmall.swift; sourceTree = "<group>"; };
@@ -126,7 +133,6 @@
 		64A63EDF2E8C5B48002450B0 /* HealthMetric.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthMetric.swift; sourceTree = "<group>"; };
 		64A63EE22E8C5CF5002450B0 /* HealthMetric+HealthKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HealthMetric+HealthKit.swift"; sourceTree = "<group>"; };
 		64A63EE52E8C65AA002450B0 /* CSVWriter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CSVWriter.swift; sourceTree = "<group>"; };
-		64A93EB12E8D7952006F28D3 /* CompoundHealthMetric.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompoundHealthMetric.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -227,6 +233,16 @@
 			path = LifelineUITests;
 			sourceTree = "<group>";
 		};
+		643F7F6B2E90FC4F008788E8 /* SwitchView */ = {
+			isa = PBXGroup;
+			children = (
+				643F7F722E90FEDB008788E8 /* ToggleRow.swift */,
+				643F7F6F2E90FCC4008788E8 /* ToggleView.swift */,
+				643F7F6C2E90FC56008788E8 /* ToggleElement.swift */,
+			);
+			path = SwitchView;
+			sourceTree = "<group>";
+		};
 		645B0B272B8CBAB000D14476 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -261,6 +277,7 @@
 		64703A002B8F34D100380D5C /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				643F7F6B2E90FC4F008788E8 /* SwitchView */,
 				648B31632E8998D900380C60 /* ExportView */,
 				648B31602E8995EA00380C60 /* TabBarView.swift */,
 				642470432B8B3B1A00951547 /* LifeExpectancyView.swift */,
@@ -292,9 +309,9 @@
 		648B31682E899A5900380C60 /* HealthKit */ = {
 			isa = PBXGroup;
 			children = (
+				643F7F752E9100E9008788E8 /* HealthMetric+ToggleElement.swift */,
 				64A63EE22E8C5CF5002450B0 /* HealthMetric+HealthKit.swift */,
 				64A63EDF2E8C5B48002450B0 /* HealthMetric.swift */,
-				64A93EB12E8D7952006F28D3 /* CompoundHealthMetric.swift */,
 				648B316F2E899D7700380C60 /* HealthKitManager.swift */,
 				648B316C2E899A9A00380C60 /* HealthKitReader.swift */,
 				648B31692E899A6400380C60 /* HealthKitAuthorizer.swift */,
@@ -472,13 +489,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				643F7F762E9100F2008788E8 /* HealthMetric+ToggleElement.swift in Sources */,
+				643F7F742E90FEDE008788E8 /* ToggleRow.swift in Sources */,
 				645DDA422B8BDF5500F712E4 /* LifelineView.swift in Sources */,
 				642470442B8B3B1A00951547 /* LifeExpectancyView.swift in Sources */,
 				648B31752E89A26300380C60 /* CSV.swift in Sources */,
+				643F7F6E2E90FC67008788E8 /* ToggleElement.swift in Sources */,
 				64A63EE62E8C65AE002450B0 /* CSVWriter.swift in Sources */,
 				645DDA482B8BE3F500F712E4 /* SharedAppStorage.swift in Sources */,
 				645B0B292B8CDA5B00D14476 /* LifeStats.swift in Sources */,
-				64A93EB22E8D7952006F28D3 /* CompoundHealthMetric.swift in Sources */,
 				648B31662E8998E900380C60 /* ExportView.swift in Sources */,
 				645B0B2C2B8CDD6B00D14476 /* AppIntent.swift in Sources */,
 				642470422B8B3B1A00951547 /* LifelineApp.swift in Sources */,
@@ -487,6 +506,7 @@
 				645DDA062B8BD4AE00F712E4 /* ProgressBarView.swift in Sources */,
 				64703A022B8F354500380D5C /* TextBubble.swift in Sources */,
 				648B31622E8995F200380C60 /* TabBarView.swift in Sources */,
+				643F7F702E90FCC9008788E8 /* ToggleView.swift in Sources */,
 				648B316D2E899A9E00380C60 /* HealthKitReader.swift in Sources */,
 				648B31702E899D7B00380C60 /* HealthKitManager.swift in Sources */,
 				64A63EE42E8C5CFC002450B0 /* HealthMetric+HealthKit.swift in Sources */,

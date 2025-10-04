@@ -11,13 +11,12 @@ struct TabBarView: View {
     
     var body: some View {
         TabView {
-          Tab("Lifeline", systemImage: "heart.fill") {
-            LifeExpectancyView()
-          }
-
-          Tab("Export", systemImage: "chart.bar") {
-              ExportView()
-          }
+            Tab("Export", systemImage: "chart.bar") {
+                ExportView()
+            }
+            Tab("Lifeline", systemImage: "heart.fill") {
+                LifeExpectancyView()
+            }
         }
     }
 }
