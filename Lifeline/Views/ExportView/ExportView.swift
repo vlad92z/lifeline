@@ -20,12 +20,21 @@ struct ExportView: View {
     @State private var end = Date()
     @State private var metricsToExport = Set<HealthMetric.ID>()
     @State private var isExporting = false
+    @State private var showMetricsSheet = false
     
     var body: some View {
         ZStack {
             VStack {
                 header
-                ToggleView(elements: HealthMetric.allCases, enabled: $metricsToExport)
+                
+                Button("Select Metrics") {
+                    showMetricsSheet = true
+                }
+                Spacer()
+                .buttonStyle(.bordered)
+                .sheet(isPresented: $showMetricsSheet) {
+                    ToggleView(title: "Select Export Metrics", elements: HealthMetric.allCases, enabled: $metricsToExport)
+                }
                 HStack {
                     DatePicker("Start", selection: $start, displayedComponents: [.date]).padding()
                     DatePicker("End", selection: $end, displayedComponents: [.date]).padding()
@@ -58,7 +67,7 @@ struct ExportView: View {
                 }
             }
         }
-        .background(Color(uiColor: .systemGroupedBackground))
+        //.background(Color(uiColor: .systemGroupedBackground))
     }
     
     private var header: some View {
