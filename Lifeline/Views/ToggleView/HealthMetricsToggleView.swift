@@ -6,7 +6,7 @@
 //
 import SwiftUI
 
-struct ToggleView<T: ToggleElement>: View {
+struct HealthMetricsToggleView<T: ToggleElement>: View {
     let title: String
     let elements: [T]
     
@@ -60,6 +60,6 @@ struct ToggleView<T: ToggleElement>: View {
 
 #Preview("ToggleView Example") {
     @Previewable @State var enabledMetrics = Set<HealthMetric.ID>()
-    ToggleView(title: "Select Export Metrics", elements: HealthMetric.allCases, enabled: $enabledMetrics)
+    HealthMetricsToggleView(title: "Select Export Metrics", elements: HealthMetric.allCases, enabled: $enabledMetrics)
 }
 

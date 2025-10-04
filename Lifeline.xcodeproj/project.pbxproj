@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		64007CA12E9160B1007F0940 /* HealthMetricCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64007CA02E9160AC007F0940 /* HealthMetricCategory.swift */; };
+		64007CA32E9163C1007F0940 /* ToggleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64007CA22E9163BF007F0940 /* ToggleView.swift */; };
 		6400C7952B8F813700B11CBC /* MarkerProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6400C7942B8F813700B11CBC /* MarkerProgressView.swift */; };
 		6400C7962B8F813700B11CBC /* MarkerProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6400C7942B8F813700B11CBC /* MarkerProgressView.swift */; };
 		642470422B8B3B1A00951547 /* LifelineApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 642470412B8B3B1A00951547 /* LifelineApp.swift */; };
@@ -18,7 +19,7 @@
 		6424705D2B8B3B1B00951547 /* LifelineUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6424705C2B8B3B1B00951547 /* LifelineUITests.swift */; };
 		6424705F2B8B3B1B00951547 /* LifelineUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6424705E2B8B3B1B00951547 /* LifelineUITestsLaunchTests.swift */; };
 		643F7F6E2E90FC67008788E8 /* ToggleElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 643F7F6C2E90FC56008788E8 /* ToggleElement.swift */; };
-		643F7F702E90FCC9008788E8 /* ToggleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 643F7F6F2E90FCC4008788E8 /* ToggleView.swift */; };
+		643F7F702E90FCC9008788E8 /* HealthMetricsToggleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 643F7F6F2E90FCC4008788E8 /* HealthMetricsToggleView.swift */; };
 		643F7F742E90FEDE008788E8 /* ToggleRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 643F7F722E90FEDB008788E8 /* ToggleRow.swift */; };
 		643F7F762E9100F2008788E8 /* HealthMetric+ToggleElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 643F7F752E9100E9008788E8 /* HealthMetric+ToggleElement.swift */; };
 		645B0B292B8CDA5B00D14476 /* LifeStats.swift in Sources */ = {isa = PBXBuildFile; fileRef = 645B0B282B8CDA5B00D14476 /* LifeStats.swift */; };
@@ -94,6 +95,7 @@
 
 /* Begin PBXFileReference section */
 		64007CA02E9160AC007F0940 /* HealthMetricCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthMetricCategory.swift; sourceTree = "<group>"; };
+		64007CA22E9163BF007F0940 /* ToggleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToggleView.swift; sourceTree = "<group>"; };
 		6400C7942B8F813700B11CBC /* MarkerProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkerProgressView.swift; sourceTree = "<group>"; };
 		6424703E2B8B3B1A00951547 /* Lifeline.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Lifeline.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		642470412B8B3B1A00951547 /* LifelineApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LifelineApp.swift; sourceTree = "<group>"; };
@@ -106,7 +108,7 @@
 		6424705C2B8B3B1B00951547 /* LifelineUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LifelineUITests.swift; sourceTree = "<group>"; };
 		6424705E2B8B3B1B00951547 /* LifelineUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LifelineUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		643F7F6C2E90FC56008788E8 /* ToggleElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToggleElement.swift; sourceTree = "<group>"; };
-		643F7F6F2E90FCC4008788E8 /* ToggleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToggleView.swift; sourceTree = "<group>"; };
+		643F7F6F2E90FCC4008788E8 /* HealthMetricsToggleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthMetricsToggleView.swift; sourceTree = "<group>"; };
 		643F7F722E90FEDB008788E8 /* ToggleRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToggleRow.swift; sourceTree = "<group>"; };
 		643F7F752E9100E9008788E8 /* HealthMetric+ToggleElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HealthMetric+ToggleElement.swift"; sourceTree = "<group>"; };
 		645B0B282B8CDA5B00D14476 /* LifeStats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LifeStats.swift; sourceTree = "<group>"; };
@@ -235,14 +237,15 @@
 			path = LifelineUITests;
 			sourceTree = "<group>";
 		};
-		643F7F6B2E90FC4F008788E8 /* SwitchView */ = {
+		643F7F6B2E90FC4F008788E8 /* ToggleView */ = {
 			isa = PBXGroup;
 			children = (
+				64007CA22E9163BF007F0940 /* ToggleView.swift */,
 				643F7F722E90FEDB008788E8 /* ToggleRow.swift */,
-				643F7F6F2E90FCC4008788E8 /* ToggleView.swift */,
+				643F7F6F2E90FCC4008788E8 /* HealthMetricsToggleView.swift */,
 				643F7F6C2E90FC56008788E8 /* ToggleElement.swift */,
 			);
-			path = SwitchView;
+			path = ToggleView;
 			sourceTree = "<group>";
 		};
 		645B0B272B8CBAB000D14476 /* Model */ = {
@@ -279,7 +282,7 @@
 		64703A002B8F34D100380D5C /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				643F7F6B2E90FC4F008788E8 /* SwitchView */,
+				643F7F6B2E90FC4F008788E8 /* ToggleView */,
 				648B31632E8998D900380C60 /* ExportView */,
 				648B31602E8995EA00380C60 /* TabBarView.swift */,
 				642470432B8B3B1A00951547 /* LifeExpectancyView.swift */,
@@ -508,9 +511,10 @@
 				648B316A2E899A6B00380C60 /* HealthKitAuthorizer.swift in Sources */,
 				64A63EE12E8C5B50002450B0 /* HealthMetric.swift in Sources */,
 				645DDA062B8BD4AE00F712E4 /* ProgressBarView.swift in Sources */,
+				64007CA32E9163C1007F0940 /* ToggleView.swift in Sources */,
 				64703A022B8F354500380D5C /* TextBubble.swift in Sources */,
 				648B31622E8995F200380C60 /* TabBarView.swift in Sources */,
-				643F7F702E90FCC9008788E8 /* ToggleView.swift in Sources */,
+				643F7F702E90FCC9008788E8 /* HealthMetricsToggleView.swift in Sources */,
 				648B316D2E899A9E00380C60 /* HealthKitReader.swift in Sources */,
 				648B31702E899D7B00380C60 /* HealthKitManager.swift in Sources */,
 				64A63EE42E8C5CFC002450B0 /* HealthMetric+HealthKit.swift in Sources */,
