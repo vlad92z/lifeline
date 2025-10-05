@@ -28,7 +28,6 @@ struct HealthKitAuthorisationView: View {
             .font(.body)
             .foregroundStyle(.secondary)
             
-            // Example metrics visual (optional)
             VStack(alignment: .leading, spacing: 6) {
                 Label("Steps", systemImage: "figure.walk")
                 Label("Heart Rate", systemImage: "heart.fill")
@@ -41,16 +40,11 @@ struct HealthKitAuthorisationView: View {
             .background(.thinMaterial)
             .cornerRadius(12)
             
-            
-            
-            
-            // Privacy footnote
             Text("Your health data never leaves your device unless you choose to export it. You can review or revoke access anytime in the Health app → Sources → Lifeline.")
                 .font(.footnote)
                 .foregroundStyle(.secondary)
                 .padding(.top, 8)
             
-            // Grant Access button
             Button(action: {
                 Task {
                     await healthReader.requestAuthorization()
