@@ -36,8 +36,8 @@ struct HealthMetricCategory: Identifiable {
         ),
         HealthMetricCategory(
             name: "Nutrition",
-            metrics: [.dietaryCarbohydrates, .dietaryFatTotal, .dietaryProtein, .dietarySugar, .dietaryFiber, .dietaryFatSaturated, .dietarySodium],
-            advanced: [.dietaryWater, .dietaryFatMonounsaturated, .dietaryFatPolyunsaturated, .dietaryCholesterol, .dietaryBiotin, .dietaryCaffeine, .dietaryCalcium, .dietaryChloride, .dietaryChromium, .dietaryCopper, .dietaryFolate, .dietaryIodine, .dietaryIron, .dietaryMagnesium, .dietaryManganese, .dietaryMolybdenum, .dietaryNiacin, .dietaryPantothenicAcid, .dietaryPhosphorus, .dietaryPotassium, .dietaryRiboflavin, .dietarySelenium, .dietaryThiamin, .dietaryVitaminA, .dietaryVitaminB12, .dietaryVitaminB6, .dietaryVitaminC, .dietaryVitaminD, .dietaryVitaminE, .dietaryVitaminK, .dietaryZinc]
+            metrics: [.dietaryCarbohydrates, .dietaryFatTotal, .dietaryProtein],
+            advanced: [.dietarySugar, .dietaryFiber, .dietaryFatSaturated, .dietarySodium, .dietaryWater, .dietaryFatMonounsaturated, .dietaryFatPolyunsaturated, .dietaryCholesterol, .dietaryBiotin, .dietaryCaffeine, .dietaryCalcium, .dietaryChloride, .dietaryChromium, .dietaryCopper, .dietaryFolate, .dietaryIodine, .dietaryIron, .dietaryMagnesium, .dietaryManganese, .dietaryMolybdenum, .dietaryNiacin, .dietaryPantothenicAcid, .dietaryPhosphorus, .dietaryPotassium, .dietaryRiboflavin, .dietarySelenium, .dietaryThiamin, .dietaryVitaminA, .dietaryVitaminB12, .dietaryVitaminB6, .dietaryVitaminC, .dietaryVitaminD, .dietaryVitaminE, .dietaryVitaminK, .dietaryZinc]
         ),
         HealthMetricCategory(
             name: "Fitness",
