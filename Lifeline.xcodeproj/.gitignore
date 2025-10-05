@@ -1,0 +1,92 @@
+# Xcode
+.DS_Store
+build/
+DerivedData/
+*.pbxuser
+!default.pbxuser
+*.mode1v3
+!default.mode1v3
+*.mode2v3
+!default.mode2v3
+*.perspectivev3
+!default.perspectivev3
+xcuserdata/
+*.xccheckout
+*.xcscmblueprint
+
+# Swift Package Manager
+.swiftpm/
+.build/
+Packages/
+Package.pins
+Package.resolved
+
+# CocoaPods
+Pods/
+
+# Carthage
+Carthage/Build/
+
+# Fastlane
+fastlane/report.xml
+fastlane/Preview.html
+fastlane/screenshots/
+fastlane/test_output/
+
+# Accio dependency management
+Dependencies/
+.accio/
+
+# AppCode
+.idea/
+*.iml
+
+# Archives
+*.xcarchive
+
+# User-specific settings
+*.xcuserstate
+
+# Playgrounds
+timeline.xctimeline
+playground.xcworkspace
+
+# SwiftPM Xcode integration
+.xcodeproj/project.xcworkspace/xcuserdata/
+
+# Provisioning profiles and certificates
+*.mobileprovision
+*.provisionprofile
+*.p12
+*.pem
+
+# Secrets and environment files
+.env
+.env.*
+Secrets/
+secret/
+secrets/
+
+# Logs
+*.log
+
+# Output artifacts
+*.ipa
+*.dSYM
+
+# Generated files
+*.generated.swift
+
+# Firebase/Google configs (if present; provide sample instead)
+GoogleService-Info.plist
+GoogleService-Info*.plist
+
+# macOS
+*.swp
+*~
+.Trashes
+.Spotlight-V100
+.AppleDouble
+.LSOverride
+Icon?
+._*
