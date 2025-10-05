@@ -28,10 +28,17 @@ struct HealthKitAuthorisationView: View {
             .font(.body)
             .foregroundStyle(.secondary)
             
-            VStack(alignment: .leading, spacing: 6) {
-                Label("Steps", systemImage: "figure.walk")
-                Label("Heart Rate", systemImage: "heart.fill")
-                Label("Sleep Analysis", systemImage: "bed.double.fill")
+            HStack(alignment: .top, spacing: 24) {
+                VStack(alignment: .leading, spacing: 6) {
+                    Label("Steps", systemImage: "figure.walk")
+                    Label("Heart Rate", systemImage: "heart.fill")
+                    Label("Sleep Analysis", systemImage: "bed.double.fill")
+                }
+                VStack(alignment: .leading, spacing: 6) {
+                    Label("Active Energy", systemImage: "flame.fill")
+                    Label("Nutrition", systemImage: "fork.knife")
+                    Label("Exercise", systemImage: "figure.run")
+                }
             }
             .frame(maxWidth: .infinity)
             .font(.callout)
@@ -69,3 +76,4 @@ struct HealthKitAuthorisationView: View {
     @Previewable @State var healthData = false
     HealthKitAuthorisationView(healthReader: HealthKitReader(), isHealthDataAccessRequested: $healthData)
 }
+
