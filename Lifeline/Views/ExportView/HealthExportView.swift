@@ -20,6 +20,7 @@ struct HealthExportView: View {
     @State private var end = Calendar.current.startOfDay(for: Date())
     @State private var metricsToExport = Set<HealthMetric.ID>()
     @State private var isExporting = false
+    private let metricsSelectionDefaultsKey = "HealthExport.metricsSelection"
     
     var selectedText: String {
         if metricsToExport.isEmpty {
@@ -91,8 +92,25 @@ struct HealthExportView: View {
                 }
             }
             .navigationTitle("Export")
+            .onAppear {
+                loadMetricsSelection()
+            }
+            .onChange(of: metricsToExport) { _ in
+                saveMetricsSelection()
+            }
         }
         
+    }
+    
+    private func loadMetricsSelection() {
+        if let saved = UserDefaults.standard.stringArray(forKey: metricsSelectionDefaultsKey) {
+            metricsToExport = Set(saved)
+        }
+    }
+
+    private func saveMetricsSelection() {
+        let arr = Array(metricsToExport).sorted()
+        UserDefaults.standard.set(arr, forKey: metricsSelectionDefaultsKey)
     }
     
     private func csvTempURL() async -> URL {
