@@ -60,7 +60,7 @@ struct ExportView: View {
                     }
 
                     Section {
-                        Button("Share CSV") {
+                        Button("Export CSV") {
                             isExporting = true
                             Task {
                                 let url = await csvTempURL()
