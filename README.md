@@ -1,2 +1,2 @@
 # lifeline
-This iOS app tracks an estimate of the remaining time you have left to make the most of it.
+Allows users to export their Apple Health data to a CSV file and share using a system prompt (email, Airdrop, etc).
