@@ -92,27 +92,8 @@ struct ExportView: View {
                 }
             }
             .navigationTitle("Export")
-            .toolbar {
-                ToolbarItem(placement: .topBarTrailing) {
-                    Button("Request") {
-                        HealthKitReader().requestAuthorization()
-                    }
-                }
-            }
         }
         
-    }
-    
-    private var header: some View {
-        HStack {
-            Spacer()
-            Button("Request Access") {
-                Task {
-                    let reader = HealthKitReader()
-                    reader.requestAuthorization()
-                }
-            }.buttonStyle(.borderedProminent)
-        }
     }
     
     private func csvTempURL() async -> URL {

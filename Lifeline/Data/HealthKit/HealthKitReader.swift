@@ -13,18 +13,15 @@ struct HealthKitReader {
         return HKHealthStore.isHealthDataAvailable()
     }
     
-    func requestAuthorization() {
+    func requestAuthorization() async {
         guard isAvailable else {
-            return //todo should throw
+            return
         }
-        let types = HealthMetric.allCases.map { $0.quantityType }
-        let readTypes: Set<HKObjectType> = Set(types)
-        
-        healthKit.requestAuthorization(toShare: nil, read: readTypes) { success, error in
-            if success {
-                print("Success")
-            } else {
-                print("\(String(describing: error))")
+        await withCheckedContinuation { continuation in
+            let types = HealthMetric.allCases.map { $0.quantityType }
+            let readTypes: Set<HKObjectType> = Set(types)
+            healthKit.requestAuthorization(toShare: nil, read: readTypes) { success, error in
+                continuation.resume()
             }
         }
     }
