@@ -6,7 +6,7 @@
 //
 import SwiftUI
 
-struct HealthKitAccessView: View {
+struct HealthKitAuthorisationView: View {
     
     let healthReader: HealthKitReader
     @Binding var isHealthDataAccessRequested: Bool
@@ -54,7 +54,7 @@ struct HealthKitAccessView: View {
             Button(action: {
                 Task {
                     await healthReader.requestAuthorization()
-                    isHealthDataAccessRequested = false
+                    isHealthDataAccessRequested = true
                 }
             }
             ) {
@@ -73,5 +73,5 @@ struct HealthKitAccessView: View {
 
 #Preview("HealthKitAccessView") {
     @Previewable @State var healthData = false
-    HealthKitAccessView(healthReader: HealthKitReader(), isHealthDataAccessRequested: $healthData)
+    HealthKitAuthorisationView(healthReader: HealthKitReader(), isHealthDataAccessRequested: $healthData)
 }

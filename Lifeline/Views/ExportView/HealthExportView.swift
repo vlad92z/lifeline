@@ -13,14 +13,13 @@ extension URL: @retroactive Identifiable {
     }
 }
 
-struct ExportView: View {
+struct HealthExportView: View {
         
     @State private var shareURL: URL?
     @State private var start = Calendar.current.startOfDay(for: Date())
     @State private var end = Calendar.current.startOfDay(for: Date())
     @State private var metricsToExport = Set<HealthMetric.ID>()
     @State private var isExporting = false
-    
     
     var selectedText: String {
         if metricsToExport.isEmpty {
@@ -116,6 +115,6 @@ struct ExportView: View {
 }
 
 #Preview("Export View") {
-    ExportView()
+    HealthExportView()
 }
 
