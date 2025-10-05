@@ -67,7 +67,7 @@ extension HealthMetric {
 
         // Cardio
         case .atrialFibrillationBurden: .atrialFibrillationBurden
-        case .heartRate: .heartRate
+        case .maxHeartRate: .heartRate
         case .heartRateRecoveryOneMinute: .heartRateRecoveryOneMinute
         case .heartRateVariabilitySDNN: .heartRateVariabilitySDNN
         case .peripheralPerfusionIndex: .peripheralPerfusionIndex
@@ -179,7 +179,7 @@ extension HealthMetric {
             return .literUnit(with: .milli)
 
         // Heart rate (beats per minute)
-        case .restingHeartRate, .heartRate, .walkingHeartRateAverage, .heartRateRecoveryOneMinute:
+        case .restingHeartRate, .maxHeartRate, .walkingHeartRateAverage, .heartRateRecoveryOneMinute:
             return .count().unitDivided(by: .minute())
 
         // Body composition
@@ -277,7 +277,7 @@ extension HealthMetric {
 
         // Workout effort
         case .estimatedWorkoutEffortScore, .workoutEffortScore:
-            return .count()
+            return .appleEffortScore()
         case .physicalEffort:
             return HKUnit(from: "kcal/hr·kg")
         }
@@ -326,8 +326,10 @@ extension HealthMetric {
             return .discreteAverage
 
         // Cardio metrics
-        case .restingHeartRate, .heartRate, .walkingHeartRateAverage:
+        case .restingHeartRate, .walkingHeartRateAverage:
             return .discreteAverage
+        case .maxHeartRate:
+            return .discreteMax
         case .heartRateRecoveryOneMinute:
             return .mostRecent
         case .heartRateVariabilitySDNN:
@@ -363,8 +365,8 @@ extension HealthMetric {
             return .mostRecent
         case .uvExposure:
             return .discreteAverage
-        case .physicalEffort, .estimatedWorkoutEffortScore, .workoutEffortScore:
-            return .discreteAverage
+        case .estimatedWorkoutEffortScore, .workoutEffortScore, .physicalEffort:
+            return .discreteMax
         case .electroDermalActivity:
             return .discreteAverage
         case .nikeFuel:

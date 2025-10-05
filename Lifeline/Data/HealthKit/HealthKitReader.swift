@@ -50,6 +50,8 @@ struct HealthKitReader {
                     value = stats?.averageQuantity()?.doubleValue(for: metric.unit)
                 case .mostRecent:
                     value = stats?.mostRecentQuantity()?.doubleValue(for: metric.unit)
+                case .discreteMax:
+                    value = stats?.maximumQuantity()?.doubleValue(for: metric.unit)
                 default:
                     value = nil
                 }

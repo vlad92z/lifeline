@@ -21,8 +21,8 @@ struct HealthMetricCategory: Identifiable {
         ),
         HealthMetricCategory(
             name: "Vitals",
-            metrics: [.sleepingTemp, .basalBodyTemperature, .oxygenSaturation, .respiratoryRate],
-            advanced: [.bloodPressureDiastolic, .bloodPressureSystolic, .bodyTemperature]
+            metrics: [.sleepingTemp, .oxygenSaturation, .respiratoryRate],
+            advanced: [.bloodPressureDiastolic, .bloodPressureSystolic, .bodyTemperature, .basalBodyTemperature]
         ),
         HealthMetricCategory(
             name: "Energy",
@@ -31,23 +31,23 @@ struct HealthMetricCategory: Identifiable {
         ),
         HealthMetricCategory(
             name: "Heart",
-            metrics: [.restingHeartRate, .vo2Max, .heartRateVariabilitySDNN, .heartRate, .heartRateRecoveryOneMinute, .walkingHeartRateAverage],
-            advanced: []
+            metrics: [.restingHeartRate, .vo2Max, .walkingHeartRateAverage],
+            advanced: [.heartRateVariabilitySDNN, .maxHeartRate, .heartRateRecoveryOneMinute]
         ),
         HealthMetricCategory(
             name: "Nutrition",
-            metrics: [.dietaryCarbohydrates, .dietaryFatTotal, .dietaryProtein, .dietarySugar, .dietaryFiber, .dietaryCholesterol, .dietaryFatMonounsaturated, .dietaryFatPolyunsaturated, .dietaryFatSaturated, .dietarySodium],
-            advanced: [.dietaryWater, .dietaryBiotin, .dietaryCaffeine, .dietaryCalcium, .dietaryChloride, .dietaryChromium, .dietaryCopper, .dietaryFolate, .dietaryIodine, .dietaryIron, .dietaryMagnesium, .dietaryManganese, .dietaryMolybdenum, .dietaryNiacin, .dietaryPantothenicAcid, .dietaryPhosphorus, .dietaryPotassium, .dietaryRiboflavin, .dietarySelenium, .dietaryThiamin, .dietaryVitaminA, .dietaryVitaminB12, .dietaryVitaminB6, .dietaryVitaminC, .dietaryVitaminD, .dietaryVitaminE, .dietaryVitaminK, .dietaryZinc]
+            metrics: [.dietaryCarbohydrates, .dietaryFatTotal, .dietaryProtein, .dietarySugar, .dietaryFiber, .dietaryFatSaturated, .dietarySodium],
+            advanced: [.dietaryWater, .dietaryFatMonounsaturated, .dietaryFatPolyunsaturated, .dietaryCholesterol, .dietaryBiotin, .dietaryCaffeine, .dietaryCalcium, .dietaryChloride, .dietaryChromium, .dietaryCopper, .dietaryFolate, .dietaryIodine, .dietaryIron, .dietaryMagnesium, .dietaryManganese, .dietaryMolybdenum, .dietaryNiacin, .dietaryPantothenicAcid, .dietaryPhosphorus, .dietaryPotassium, .dietaryRiboflavin, .dietarySelenium, .dietaryThiamin, .dietaryVitaminA, .dietaryVitaminB12, .dietaryVitaminB6, .dietaryVitaminC, .dietaryVitaminD, .dietaryVitaminE, .dietaryVitaminK, .dietaryZinc]
         ),
         HealthMetricCategory(
             name: "Fitness",
-            metrics: [.stepCount, .appleExerciseTime, .appleMoveTime, .appleStandTime, .distanceWalkingRunning, .flightsClimbed],
-            advanced: [.physicalEffort, .estimatedWorkoutEffortScore, .workoutEffortScore]
+            metrics: [.stepCount, .appleExerciseTime, .appleStandTime, ], //.appleMoveTime - no data for this
+            advanced: [.physicalEffort, .estimatedWorkoutEffortScore, .workoutEffortScore, .distanceWalkingRunning, .flightsClimbed]
         ),
         HealthMetricCategory(
             name: "Walking",
             metrics: [.walkingSpeed],
-            advanced: [.walkingStepLength, .sixMinuteWalkTestDistance, .stairAscentSpeed, .stairDescentSpeed, .appleWalkingSteadiness, .walkingAsymmetryPercentage, .walkingDoubleSupportPercentage]
+            advanced: [.walkingStepLength, .stairAscentSpeed, .stairDescentSpeed, .walkingAsymmetryPercentage, .walkingDoubleSupportPercentage, .sixMinuteWalkTestDistance, .appleWalkingSteadiness]
         ),
         HealthMetricCategory(
             name: "Running",
@@ -56,8 +56,8 @@ struct HealthMetricCategory: Identifiable {
         ),
         HealthMetricCategory(
             name: "Cycling",
-            metrics: [.distanceCycling, .cyclingSpeed],
-            advanced: [.cyclingCadence, .cyclingFunctionalThresholdPower, .cyclingPower]
+            metrics: [.distanceCycling],
+            advanced: [.cyclingSpeed, .cyclingCadence, .cyclingFunctionalThresholdPower, .cyclingPower]
         ),
         HealthMetricCategory(
             name: "Swimming",
@@ -74,15 +74,15 @@ struct HealthMetricCategory: Identifiable {
             metrics: [.distanceRowing, .rowingSpeed, .distancePaddleSports, .paddleSportsSpeed],
             advanced: []
         ),
-        HealthMetricCategory(
-            name: "Skate",
-            metrics: [.distanceSkatingSports],
-            advanced: []
-        ),
+//        HealthMetricCategory(
+//            name: "Skate",
+//            metrics: [.distanceSkatingSports],
+//            advanced: []
+//        ),
         HealthMetricCategory(
             name: "Environment",
-            metrics: [.headphoneAudioExposure, .environmentalAudioExposure, .environmentalSoundReduction, .timeInDaylight, .uvExposure],
-            advanced: []
+            metrics: [.headphoneAudioExposure, .environmentalAudioExposure, .environmentalSoundReduction],
+            advanced: [.timeInDaylight, .uvExposure]
         ),
         HealthMetricCategory(
             name: "Wheelchair",

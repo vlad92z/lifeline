@@ -37,7 +37,7 @@ enum HealthMetric: String, Codable, CaseIterable, Identifiable {
     case restingHeartRate = "Resting HR"
     case vo2Max = "VO2 Max (mL/kg·min)"
     case heartRateVariabilitySDNN = "HRV SDNN (ms)"
-    case heartRate = "Heart Rate (bpm)" //TODO: Maximum HR
+    case maxHeartRate = "Max HR (bpm)"
     case heartRateRecoveryOneMinute = "HR Recovery 1min (bpm)"
     case walkingHeartRateAverage = "Walking HR Avg (bpm)"
     
@@ -92,7 +92,7 @@ enum HealthMetric: String, Codable, CaseIterable, Identifiable {
     case flightsClimbed = "Flights Climbed"
     
     // MARK: - Fitness (Advanced)
-    case physicalEffort = "Physical Effort"
+    case physicalEffort = "Max Effort (kcal/hr·kg)"
     case estimatedWorkoutEffortScore = "Estimated Workout Effort Score"
     case workoutEffortScore = "Workout Effort Score"
     
