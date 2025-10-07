@@ -85,4 +85,26 @@ struct HealthKitReader {
         }
         return responseMap
     }
+    
+    /// Check if HealthKit has any data for a given HealthMetric.
+    /// Returns true if at least one sample exists for the metric's quantity type.
+    func hasData(for metric: HealthMetric) async throws -> Bool {
+        return try await withCheckedThrowingContinuation { continuation in
+            let sampleType = metric.quantityType
+            // No date predicate: search across all available time
+            let predicate: NSPredicate? = nil
+            let query = HKSampleQuery(sampleType: sampleType,
+                                      predicate: predicate,
+                                      limit: 1,
+                                      sortDescriptors: nil) { _, samples, error in
+                if let error = error {
+                    continuation.resume(throwing: error)
+                    return
+                }
+                let hasAny = (samples?.isEmpty == false)
+                continuation.resume(returning: hasAny)
+            }
+            healthKit.execute(query)
+        }
+    }
 }
