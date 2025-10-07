@@ -44,6 +44,7 @@
 		64703A032B8F354500380D5C /* TextBubble.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64703A012B8F354500380D5C /* TextBubble.swift */; };
 		64703A042B8F357500380D5C /* ProgressBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 645DDA052B8BD4AE00F712E4 /* ProgressBarView.swift */; };
 		64703A052B8F4A1300380D5C /* LifelineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 645DDA412B8BDF5500F712E4 /* LifelineView.swift */; };
+		648836572E94F3E800C4AE8C /* HealthExportView+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 648836562E94F3DD00C4AE8C /* HealthExportView+ViewModel.swift */; };
 		648B31622E8995F200380C60 /* TabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 648B31602E8995EA00380C60 /* TabBarView.swift */; };
 		648B31662E8998E900380C60 /* HealthExportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 648B31642E8998E700380C60 /* HealthExportView.swift */; };
 		648B316D2E899A9E00380C60 /* HealthKitReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 648B316C2E899A9A00380C60 /* HealthKitReader.swift */; };
@@ -130,6 +131,7 @@
 		645DDA462B8BE25500F712E4 /* Lifeline.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Lifeline.entitlements; sourceTree = "<group>"; };
 		645DDA472B8BE3F500F712E4 /* SharedAppStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedAppStorage.swift; sourceTree = "<group>"; };
 		64703A012B8F354500380D5C /* TextBubble.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextBubble.swift; sourceTree = "<group>"; };
+		648836562E94F3DD00C4AE8C /* HealthExportView+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HealthExportView+ViewModel.swift"; sourceTree = "<group>"; };
 		648B31602E8995EA00380C60 /* TabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarView.swift; sourceTree = "<group>"; };
 		648B31642E8998E700380C60 /* HealthExportView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthExportView.swift; sourceTree = "<group>"; };
 		648B316C2E899A9A00380C60 /* HealthKitReader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthKitReader.swift; sourceTree = "<group>"; };
@@ -298,6 +300,7 @@
 		648B31632E8998D900380C60 /* ExportView */ = {
 			isa = PBXGroup;
 			children = (
+				648836562E94F3DD00C4AE8C /* HealthExportView+ViewModel.swift */,
 				6424B1B62E92D212009430A2 /* HealthExportRootView.swift */,
 				64007CB12E92CC3D007F0940 /* HealthKitAuthorisationView.swift */,
 				648B31642E8998E700380C60 /* HealthExportView.swift */,
@@ -513,6 +516,7 @@
 				642470422B8B3B1A00951547 /* LifelineApp.swift in Sources */,
 				64007CB22E92CC43007F0940 /* HealthKitAuthorisationView.swift in Sources */,
 				64A63EE12E8C5B50002450B0 /* HealthMetric.swift in Sources */,
+				648836572E94F3E800C4AE8C /* HealthExportView+ViewModel.swift in Sources */,
 				645DDA062B8BD4AE00F712E4 /* ProgressBarView.swift in Sources */,
 				64007CA32E9163C1007F0940 /* ToggleView.swift in Sources */,
 				64703A022B8F354500380D5C /* TextBubble.swift in Sources */,
