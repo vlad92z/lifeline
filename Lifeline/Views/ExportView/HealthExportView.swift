@@ -46,14 +46,7 @@ struct HealthExportView: View {
 
                     Section {
                         Button("Export CSV") {
-                            viewModel.isExporting = true
-                            Task {
-                                let url = await csvTempURL()
-                                await MainActor.run {
-                                    viewModel.shareURL = url
-                                    viewModel.isExporting = false
-                                }
-                            }
+                            Task { await viewModel.exportCSV() }
                         }
                         .disabled(viewModel.isExporting)
                         .frame(maxWidth: .infinity, alignment: .center)
@@ -77,51 +70,16 @@ struct HealthExportView: View {
                 }
             }
             .navigationTitle("Export")
-            .onAppear {
-                loadMetricsSelection()
-            }
-            .onChange(of: viewModel.metricsToExport) {
-                saveMetricsSelection()
-            }
+            .task { viewModel.onAppear() }
+            .onChange(of: viewModel.metricsToExport) { viewModel.metricsSelectionDidChange() }
             .onChange(of: viewModel.start) {
-                let cal = Calendar.current
-                let today = cal.startOfDay(for: Date())
-                var normalizedStart = cal.startOfDay(for: viewModel.start)
-                // Clamp start to not be in the future
-                if normalizedStart > today { normalizedStart = today }
-                viewModel.start = normalizedStart
-                // Ensure start <= end
-                if viewModel.start > viewModel.end { viewModel.end = viewModel.start }
+                viewModel.normalizeStart()
             }
             .onChange(of: viewModel.end) {
-                let cal = Calendar.current
-                let today = cal.startOfDay(for: Date())
-                var normalizedEnd = cal.startOfDay(for: viewModel.end)
-                // Clamp end to not be in the future
-                if normalizedEnd > today { normalizedEnd = today }
-                viewModel.end = normalizedEnd
-                // Ensure start <= end
-                if viewModel.end < viewModel.start { viewModel.start = viewModel.end }
+                viewModel.normalizeEnd()
             }
         }
         
-    }
-    
-    private func loadMetricsSelection() {
-        if let saved = UserDefaults.standard.stringArray(forKey: viewModel.metricsSelectionDefaultsKey) {
-            viewModel.metricsToExport = Set(saved)
-        }
-    }
-
-    private func saveMetricsSelection() {
-        let arr = Array(viewModel.metricsToExport).sorted()
-        UserDefaults.standard.set(arr, forKey: viewModel.metricsSelectionDefaultsKey)
-    }
-    
-    private func csvTempURL() async -> URL {
-        let writer = CSVWriter()
-        let metrics = HealthMetric.metrics(from: viewModel.metricsToExport)
-        return await writer.write(metrics: metrics, from: viewModel.start, to: viewModel.end)
     }
     
     struct ActivityViewController: UIViewControllerRepresentable {
@@ -138,4 +96,3 @@ struct HealthExportView: View {
 #Preview("Export View") {
     HealthExportView()
 }
-
