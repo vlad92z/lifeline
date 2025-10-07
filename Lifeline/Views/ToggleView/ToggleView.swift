@@ -16,7 +16,7 @@ struct ToggleView<T: ToggleElement>: View {
     
     var body: some View {
         Section {
-            ForEach(elements) { element in
+            ForEach(elements.filter { available.contains($0.id) }) { element in
                 ToggleRow(
                     element: element,
                     isOn: binding(for: element.id)
@@ -39,10 +39,10 @@ struct ToggleView<T: ToggleElement>: View {
                 .accessibilityLabel(anySelected ? "Disable" : "Enable")
             }
         }
-        if !advanced.isEmpty {
+        if (!advanced.filter { available.contains($0.id) }.isEmpty) {
             Section {
                 if showAdvanced {
-                    ForEach(advanced) { element in
+                    ForEach(advanced.filter { available.contains($0.id) }) { element in
                         ToggleRow(
                             element: element,
                             isOn: binding(for: element.id)
@@ -79,9 +79,9 @@ struct ToggleView<T: ToggleElement>: View {
     }
     
     private var visibleIDs: Set<T.ID> {
-        var ids = Set(elements.map(\.id))
+        var ids = Set(elements.map(\.id).filter { available.contains($0) })
         if showAdvanced {
-            ids.formUnion(advanced.map(\.id))
+            ids.formUnion(advanced.map(\.id).filter { available.contains($0) })
         }
         return ids
     }
