@@ -98,6 +98,26 @@ struct HealthExportView: View {
             .onChange(of: metricsToExport) { _ in
                 saveMetricsSelection()
             }
+            .onChange(of: start) { newStart in
+                let cal = Calendar.current
+                let today = cal.startOfDay(for: Date())
+                var normalizedStart = cal.startOfDay(for: newStart)
+                // Clamp start to not be in the future
+                if normalizedStart > today { normalizedStart = today }
+                start = normalizedStart
+                // Ensure start <= end
+                if start > end { end = start }
+            }
+            .onChange(of: end) { newEnd in
+                let cal = Calendar.current
+                let today = cal.startOfDay(for: Date())
+                var normalizedEnd = cal.startOfDay(for: newEnd)
+                // Clamp end to not be in the future
+                if normalizedEnd > today { normalizedEnd = today }
+                end = normalizedEnd
+                // Ensure start <= end
+                if end < start { start = end }
+            }
         }
         
     }
