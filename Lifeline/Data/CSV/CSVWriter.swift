@@ -34,6 +34,7 @@ struct CSVWriter {
 
         // Write header once
         handle.write(CSVStream.header(headers))
+        var hasWrittenFirstRow = false
 
         var current = start
 
@@ -53,8 +54,24 @@ struct CSVWriter {
                 }
             }
 
-            // Stream one CSV line
-            handle.write(CSVStream.line(headers: headers, row: row))
+            // Determine if this row is empty (no metric has a value)
+            let isEmptyRow: Bool = {
+                // Consider only metric columns; ignore the date column
+                for metric in metrics {
+                    if let v = row[metric.name], let unwrapped = v, !unwrapped.isEmpty {
+                        return false
+                    }
+                }
+                return true
+            }()
+
+            // Skip leading empty rows until the first non-empty row is written
+            if !hasWrittenFirstRow && isEmptyRow {
+                // Do not write this row; advance to next day
+            } else {
+                handle.write(CSVStream.line(headers: headers, row: row))
+                if !isEmptyRow { hasWrittenFirstRow = true }
+            }
 
             // Next day
             guard let next = calendar.date(byAdding: .day, value: 1, to: current) else { break }
@@ -64,3 +81,4 @@ struct CSVWriter {
         return url
     }
 }
+
