@@ -10,6 +10,7 @@ struct ToggleView<T: ToggleElement>: View {
     let title: String
     let elements: [T]
     let advanced: [T]
+    let available: Set<T.ID>
     @State var showAdvanced: Bool = false
     @Binding var enabled: Set<T.ID>
     
@@ -95,7 +96,7 @@ struct ToggleView<T: ToggleElement>: View {
     let category = HealthMetricCategory.all[0]
     Form {
         ToggleView(
-            title: category.name, elements: category.metrics, advanced: category.advanced, enabled: $enabledMetrics)
+            title: category.name, elements: category.metrics, advanced: category.advanced, available: Set(HealthMetric.allCases.map { $0.id }), enabled: $enabledMetrics)
     }
 }
 

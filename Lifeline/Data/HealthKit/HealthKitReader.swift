@@ -107,4 +107,23 @@ struct HealthKitReader {
             healthKit.execute(query)
         }
     }
+    
+    func getAvailableMetrics() async -> Set<HealthMetric.ID> {
+        guard isAvailable else { return [] }
+        let metrics = Array(HealthMetric.allCases)
+        var available = Set<HealthMetric.ID>()
+
+        await withTaskGroup(of: (HealthMetric.ID, Bool).self) { group in
+            for metric in metrics {
+                group.addTask {
+                    let has: Bool = (try? await hasData(for: metric)) ?? false
+                    return (metric.id, has)
+                }
+            }
+            for await (id, has) in group {
+                if has { available.insert(id) }
+            }
+        }
+        return available
+    }
 }

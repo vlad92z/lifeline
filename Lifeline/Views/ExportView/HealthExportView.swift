@@ -15,7 +15,7 @@ extension URL: @retroactive Identifiable {
 
 struct HealthExportView: View {
         
-    @StateObject private var viewModel = ViewModel()
+    @StateObject private var viewModel = HealthExportViewModel()
     
     var body: some View {
         NavigationStack {
@@ -26,6 +26,7 @@ struct HealthExportView: View {
                             HealthMetricsToggleView(
                                 title: "Select Export Metrics",
                                 categories: HealthMetricCategory.all,
+                                available: viewModel.availableMetrics,
                                 enabled: $viewModel.metricsToExport
                             )
                         } label: {
@@ -71,6 +72,7 @@ struct HealthExportView: View {
             }
             .navigationTitle("Export")
             .task { viewModel.onAppear() }
+            .task { viewModel.setAvailableMetrics()}
             .onChange(of: viewModel.metricsToExport) { viewModel.metricsSelectionDidChange() }
             .onChange(of: viewModel.start) {
                 viewModel.normalizeStart()

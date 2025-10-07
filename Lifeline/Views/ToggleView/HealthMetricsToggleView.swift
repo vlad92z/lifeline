@@ -9,7 +9,7 @@ import SwiftUI
 struct HealthMetricsToggleView: View {
     let title: String
     let categories: [HealthMetricCategory]
-    
+    let available: Set<HealthMetric.ID>
     @Binding var enabled: Set<HealthMetric.ID>
     
     var body: some View {
@@ -19,6 +19,7 @@ struct HealthMetricsToggleView: View {
                     title: category.name,
                     elements: category.metrics,
                     advanced: category.advanced,
+                    available: available,
                     enabled: $enabled
                 )
             }
@@ -50,6 +51,7 @@ struct HealthMetricsToggleView: View {
     HealthMetricsToggleView(
         title: "Select Export Metrics",
         categories: HealthMetricCategory.all,
+        available: Set(HealthMetric.allCases.map { $0.id}),
         enabled: $enabledMetrics)
 }
 
