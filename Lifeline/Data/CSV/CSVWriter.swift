@@ -7,7 +7,17 @@
 
 import Foundation
 
+extension Double {
+    var toString: String {
+        return String(self)
+    }
+}
+
 struct CSVWriter {
+    
+    static let dateHeader = "Date"
+    static let filenamePrefix = "health_data_"
+    static let fileExtension = "csv"
     
     let formatter = DateFormatter()
     
@@ -16,68 +26,64 @@ struct CSVWriter {
         formatter.dateStyle = .medium
         formatter.timeStyle = .none
     }
+    
+    func addEscapeCharacters(to original: String) -> String {
+        let needsQuotes = original.contains { $0 == "," || $0 == "\n" || $0 == "\"" }
+        let escaped = original.replacingOccurrences(of: "\"", with: "\"\"")
+        return needsQuotes ? "\"\(escaped)\"" : escaped
+    }
 
+    func headerRowData(_ headers: [String]) -> Data {
+        let line = headers.map(addEscapeCharacters).joined(separator: ",") + "\n"
+        return Data(line.utf8)
+    }
+
+    func rowData(headers: [String], data: [String: String?]) -> Data {
+        let cells = headers.map { key -> String in
+            if let valueForKey = data[key], let nonNullValue = valueForKey {
+                return addEscapeCharacters(to: nonNullValue)
+            } else {
+                return ""
+            }
+        }
+        let line = cells.joined(separator: ",") + "\n"
+        return Data(line.utf8)
+    }
+    
+    func newFileUrl() -> URL {
+        FileManager.default.temporaryDirectory
+            .appendingPathComponent("\(CSVWriter.filenamePrefix)\(UUID().uuidString)")
+            .appendingPathExtension(CSVWriter.fileExtension)
+    }
+    
+    
+    
     func write(metrics: [HealthMetric], from start: Date, to end: Date, calendar: Calendar = .current) async -> URL {
-        // Build headers with an explicit date column first
-        let headers = ["date"] + metrics.map { $0.name }
+        let headers = [CSVWriter.dateHeader] + metrics.map { $0.name }
         let reader = HealthKitReader()
 
-        // Unique temp file URL
-        let url = FileManager.default.temporaryDirectory
-            .appendingPathComponent("health_data_\(UUID().uuidString)")
-            .appendingPathExtension("csv")
-
-        // Prepare file & handle
+        let url = newFileUrl()
         FileManager.default.createFile(atPath: url.path, contents: nil, attributes: nil)
         guard let handle = try? FileHandle(forWritingTo: url) else { return url }
-        defer { try? handle.close() }
 
-        // Write header once
-        handle.write(CSVStream.header(headers))
-        var hasWrittenFirstRow = false
-
+        handle.write(headerRowData(headers))
+        
+        var hasWrittenFirstRow = false // needed to ignore leading empty rows
         var current = start
-
         while current <= end {
-            // Fetch values for this day only (reader should be efficient internally)
-            let valuesByMetric = try? await reader.dailyValues(for: metrics, date: current)
-
-            // Map to row keyed by headers (date + metric names)
-            var row: [String: String?] = ["date": formatter.string(from: current)]
-            if let valuesByMetric = valuesByMetric {
-                for (metric, value) in valuesByMetric {
-                    if let value = value {
-                        row[metric.name] = "\(value)"
-                    } else {
-                        row[metric.name] = nil
-                    }
-                }
+            let dailyMetrics = (try! await reader.dailyValues(for: metrics, date: current)).map { key, value in
+                return (key.name, value?.toString)
             }
-
-            // Determine if this row is empty (no metric has a value)
-            let isEmptyRow: Bool = {
-                // Consider only metric columns; ignore the date column
-                for metric in metrics {
-                    if let v = row[metric.name], let unwrapped = v, !unwrapped.isEmpty {
-                        return false
-                    }
-                }
-                return true
-            }()
-
-            // Skip leading empty rows until the first non-empty row is written
-            if !hasWrittenFirstRow && isEmptyRow {
-                // Do not write this row; advance to next day
-            } else {
-                handle.write(CSVStream.line(headers: headers, row: row))
+            let isEmptyRow = dailyMetrics.allSatisfy { $0.1 == nil }
+            if hasWrittenFirstRow || !isEmptyRow {
+                var row = Dictionary(uniqueKeysWithValues: dailyMetrics)
+                row[CSVWriter.dateHeader] = formatter.string(from: current)
+                handle.write(rowData(headers: headers, data: row))
                 if !isEmptyRow { hasWrittenFirstRow = true }
             }
-
-            // Next day
-            guard let next = calendar.date(byAdding: .day, value: 1, to: current) else { break }
-            current = next
+            current = calendar.date(byAdding: .day, value: 1, to: current)!
         }
-
+        try? handle.close()
         return url
     }
 }

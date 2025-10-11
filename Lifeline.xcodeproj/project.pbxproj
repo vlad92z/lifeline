@@ -50,7 +50,6 @@
 		648B316D2E899A9E00380C60 /* HealthKitReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 648B316C2E899A9A00380C60 /* HealthKitReader.swift */; };
 		648B31702E899D7B00380C60 /* HealthKitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 648B316F2E899D7700380C60 /* HealthKitManager.swift */; };
 		648B31712E899D7B00380C60 /* HealthKitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 648B316F2E899D7700380C60 /* HealthKitManager.swift */; };
-		648B31752E89A26300380C60 /* CSV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 648B31732E89A26100380C60 /* CSV.swift */; };
 		64A63EE12E8C5B50002450B0 /* HealthMetric.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64A63EDF2E8C5B48002450B0 /* HealthMetric.swift */; };
 		64A63EE42E8C5CFC002450B0 /* HealthMetric+HealthKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64A63EE22E8C5CF5002450B0 /* HealthMetric+HealthKit.swift */; };
 		64A63EE62E8C65AE002450B0 /* CSVWriter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64A63EE52E8C65AA002450B0 /* CSVWriter.swift */; };
@@ -136,7 +135,6 @@
 		648B31642E8998E700380C60 /* HealthExportView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthExportView.swift; sourceTree = "<group>"; };
 		648B316C2E899A9A00380C60 /* HealthKitReader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthKitReader.swift; sourceTree = "<group>"; };
 		648B316F2E899D7700380C60 /* HealthKitManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthKitManager.swift; sourceTree = "<group>"; };
-		648B31732E89A26100380C60 /* CSV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CSV.swift; sourceTree = "<group>"; };
 		64A63EDF2E8C5B48002450B0 /* HealthMetric.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthMetric.swift; sourceTree = "<group>"; };
 		64A63EE22E8C5CF5002450B0 /* HealthMetric+HealthKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HealthMetric+HealthKit.swift"; sourceTree = "<group>"; };
 		64A63EE52E8C65AA002450B0 /* CSVWriter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CSVWriter.swift; sourceTree = "<group>"; };
@@ -334,7 +332,6 @@
 			isa = PBXGroup;
 			children = (
 				64A63EE52E8C65AA002450B0 /* CSVWriter.swift */,
-				648B31732E89A26100380C60 /* CSV.swift */,
 			);
 			path = CSV;
 			sourceTree = "<group>";
@@ -504,7 +501,6 @@
 				643F7F742E90FEDE008788E8 /* ToggleRow.swift in Sources */,
 				645DDA422B8BDF5500F712E4 /* LifelineView.swift in Sources */,
 				642470442B8B3B1A00951547 /* LifeExpectancyView.swift in Sources */,
-				648B31752E89A26300380C60 /* CSV.swift in Sources */,
 				64007CA12E9160B1007F0940 /* HealthMetricCategory.swift in Sources */,
 				643F7F6E2E90FC67008788E8 /* ToggleElement.swift in Sources */,
 				64A63EE62E8C65AE002450B0 /* CSVWriter.swift in Sources */,
