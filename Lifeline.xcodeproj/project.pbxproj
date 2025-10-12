@@ -256,6 +256,7 @@
 		6439CC1B2E9B99F900F2E1B7 /* Domain */ = {
 			isa = PBXGroup;
 			children = (
+				643F7F752E9100E9008788E8 /* HealthMetric+ToggleElement.swift */,
 				64A63EDF2E8C5B48002450B0 /* HealthMetric.swift */,
 			);
 			path = Domain;
@@ -343,7 +344,6 @@
 			children = (
 				64A63EE52E8C65AA002450B0 /* HealthCSVWriter.swift */,
 				64007CA02E9160AC007F0940 /* HealthMetricCategory.swift */,
-				643F7F752E9100E9008788E8 /* HealthMetric+ToggleElement.swift */,
 				64A63EE22E8C5CF5002450B0 /* HealthMetric+HealthKit.swift */,
 				648B316C2E899A9A00380C60 /* HealthMetricReader.swift */,
 			);
