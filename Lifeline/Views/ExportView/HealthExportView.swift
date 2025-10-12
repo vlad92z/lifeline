@@ -26,7 +26,6 @@ struct HealthExportView: View {
                 }
             }
             .navigationTitle("Export")
-            .onChange(of: viewModel.metricsToExport) { viewModel.saveMetricsSelection() }
         }
     }
     

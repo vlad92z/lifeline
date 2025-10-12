@@ -9,7 +9,9 @@ import Foundation
 
 @MainActor
 final class HealthExportViewModel: ObservableObject {
-    @Published var metricsToExport: Set<String> = []
+    @Published var metricsToExport: Set<String> = [] {
+        didSet { saveMetricsSelection() }
+    }
     @Published var start: Date = Calendar.current.startOfDay(for: Date()) {
         didSet { normalizeStartInternal() }
     }
