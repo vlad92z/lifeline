@@ -1,5 +1,5 @@
 //
-//  HealthKitMetric.swift
+//  HealthMetric.swift
 //  Lifeline
 //
 //  Created by Vlad on 30/09/2025.

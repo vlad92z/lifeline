@@ -1,12 +1,25 @@
 //
-//  HealthKitReader.swift
+//  HealthMetricReader.swift
 //  Lifeline
 //
 //  Created by Vlad on 28/09/2025.
 //
 import HealthKit
 
-struct HealthMetricReader {
+protocol HealthMetricReading {
+    
+    var isAvailable: Bool { get }
+    func requestAuthorization() async
+    
+    func value(for metric: HealthMetric, from start: Date, to end: Date) async throws -> Double?
+    func dailyValue(_ metric: HealthMetric, date: Date) async throws -> Double?
+    func dailyValues(for metrics: [HealthMetric], date: Date) async throws -> [HealthMetric: Double?]
+    func hasData(for metric: HealthMetric) async throws -> Bool
+    func getAvailableMetrics() async -> Set<HealthMetric.ID>
+    
+}
+
+struct HealthMetricReader: HealthMetricReading {
     let healthKit = HKHealthStore()
     
     var isAvailable: Bool {
