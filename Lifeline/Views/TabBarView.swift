@@ -14,6 +14,9 @@ struct TabBarView: View {
             Tab("Export", systemImage: "chart.bar") {
                 HealthExportRootView()
             }
+            Tab("Insights", systemImage: "chart.bar") {
+                CaloriesBalanceView()
+            }
             Tab("Lifeline", systemImage: "heart.fill") {
                 LifeExpectancyView()
             }

@@ -24,6 +24,7 @@
 		6439CC162E9B8FF300F2E1B7 /* Double+ToString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6439CC152E9B8FEC00F2E1B7 /* Double+ToString.swift */; };
 		6439CC182E9B935F00F2E1B7 /* CSVWriting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6439CC172E9B935A00F2E1B7 /* CSVWriting.swift */; };
 		6439CC1A2E9B97DB00F2E1B7 /* CSVWritingFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6439CC192E9B97D500F2E1B7 /* CSVWritingFactory.swift */; };
+		6439CC1F2E9BD68200F2E1B7 /* CaloriesBalanceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6439CC1E2E9BD67500F2E1B7 /* CaloriesBalanceView.swift */; };
 		643F7F6E2E90FC67008788E8 /* ToggleElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 643F7F6C2E90FC56008788E8 /* ToggleElement.swift */; };
 		643F7F702E90FCC9008788E8 /* HealthMetricsToggleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 643F7F6F2E90FCC4008788E8 /* HealthMetricsToggleView.swift */; };
 		643F7F742E90FEDE008788E8 /* ToggleRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 643F7F722E90FEDB008788E8 /* ToggleRow.swift */; };
@@ -115,6 +116,7 @@
 		6439CC152E9B8FEC00F2E1B7 /* Double+ToString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+ToString.swift"; sourceTree = "<group>"; };
 		6439CC172E9B935A00F2E1B7 /* CSVWriting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CSVWriting.swift; sourceTree = "<group>"; };
 		6439CC192E9B97D500F2E1B7 /* CSVWritingFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CSVWritingFactory.swift; sourceTree = "<group>"; };
+		6439CC1E2E9BD67500F2E1B7 /* CaloriesBalanceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaloriesBalanceView.swift; sourceTree = "<group>"; };
 		643F7F6C2E90FC56008788E8 /* ToggleElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToggleElement.swift; sourceTree = "<group>"; };
 		643F7F6F2E90FCC4008788E8 /* HealthMetricsToggleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthMetricsToggleView.swift; sourceTree = "<group>"; };
 		643F7F722E90FEDB008788E8 /* ToggleRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToggleRow.swift; sourceTree = "<group>"; };
@@ -274,6 +276,14 @@
 			path = LifeExpectancyView;
 			sourceTree = "<group>";
 		};
+		6439CC1D2E9BD66B00F2E1B7 /* HealthInsights */ = {
+			isa = PBXGroup;
+			children = (
+				6439CC1E2E9BD67500F2E1B7 /* CaloriesBalanceView.swift */,
+			);
+			path = HealthInsights;
+			sourceTree = "<group>";
+		};
 		643F7F6B2E90FC4F008788E8 /* ToggleView */ = {
 			isa = PBXGroup;
 			children = (
@@ -319,6 +329,7 @@
 		64703A002B8F34D100380D5C /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				6439CC1D2E9BD66B00F2E1B7 /* HealthInsights */,
 				6439CC1C2E9BD35100F2E1B7 /* LifeExpectancyView */,
 				643F7F6B2E90FC4F008788E8 /* ToggleView */,
 				648B31632E8998D900380C60 /* ExportView */,
@@ -535,6 +546,7 @@
 				6439CC182E9B935F00F2E1B7 /* CSVWriting.swift in Sources */,
 				645DDA422B8BDF5500F712E4 /* LifelineView.swift in Sources */,
 				642470442B8B3B1A00951547 /* LifeExpectancyView.swift in Sources */,
+				6439CC1F2E9BD68200F2E1B7 /* CaloriesBalanceView.swift in Sources */,
 				64007CA12E9160B1007F0940 /* HealthMetricCategory.swift in Sources */,
 				643F7F6E2E90FC67008788E8 /* ToggleElement.swift in Sources */,
 				6439CC162E9B8FF300F2E1B7 /* Double+ToString.swift in Sources */,
