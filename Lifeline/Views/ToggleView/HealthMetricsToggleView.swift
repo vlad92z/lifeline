@@ -9,12 +9,20 @@ import SwiftUI
 struct HealthMetricsToggleView: View {
     let title: String
     let categories: [HealthMetricCategory]
-    let available: Set<HealthMetric.ID>
+    let available: Set<HealthMetric.ID >
     @Binding var enabled: Set<HealthMetric.ID>
+    
+    private var filteredCategories: [HealthMetricCategory] {
+        categories.filter { category in
+            let metricIDs = Set(category.metrics.map { $0.id })
+            let advancedIDs = Set(category.advanced.map { $0.id })
+            return !available.isDisjoint(with: metricIDs) || !available.isDisjoint(with: advancedIDs)
+        }
+    }
     
     var body: some View {
         Form {
-            ForEach(categories) { category in
+            ForEach(filteredCategories) { category in
                 ToggleView(
                     title: category.name,
                     elements: category.metrics,
@@ -54,4 +62,3 @@ struct HealthMetricsToggleView: View {
         available: Set(HealthMetric.allCases.map { $0.id}),
         enabled: $enabledMetrics)
 }
-
