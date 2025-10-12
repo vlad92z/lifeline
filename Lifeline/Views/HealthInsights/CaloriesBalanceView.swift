@@ -47,17 +47,32 @@ struct CaloriesBalanceView: View {
     
     var body: some View {
         VStack {
-            Chart(consumed) { item in
-                LineMark(
-                    x: .value("Day", item.month),
-                    y: .value("Value", item.value)
-                )
-                .symbol(.circle)
-                .foregroundStyle(.blue)
+            Chart {
+                // Overlay burned series
+                ForEach(consumed) { item in
+                    LineMark(
+                        x: .value("Day", item.month),
+                        y: .value("Value", item.value)
+                    )
+                    .interpolationMethod(.catmullRom)
+                    .symbol(by: .value("Series", "Consumed"))
+                    .foregroundStyle(by: .value("Series", "Consumed"))
+                }
+                
+                // Overlay burned series
+                ForEach(burned) { item in
+                    LineMark(
+                        x: .value("Day", item.month),
+                        y: .value("Value", item.value)
+                    )
+                    .interpolationMethod(.catmullRom)
+                    .symbol(by: .value("Series", "Burned"))
+                    .foregroundStyle(by: .value("Series", "Burned"))
+                }
             }
             // fixed axes
             .chartYScale(domain: 0...5000)
-            .chartXScale(domain: 0...consumed.count)
+            .chartXScale(domain: 0...max(consumed.count, burned.count))
             .chartXAxis {
                 AxisMarks(values: .stride(by: 1)) { _ in
                     AxisGridLine()
@@ -67,6 +82,7 @@ struct CaloriesBalanceView: View {
             .chartYAxis {
                 AxisMarks(position: .leading, values: .stride(by: 1000))
             }
+            .chartLegend(position: .automatic)
             .frame(height: 300)
             .padding()
             HStack {
