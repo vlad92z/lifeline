@@ -262,6 +262,18 @@
 			path = Domain;
 			sourceTree = "<group>";
 		};
+		6439CC1C2E9BD35100F2E1B7 /* LifeExpectancyView */ = {
+			isa = PBXGroup;
+			children = (
+				642470432B8B3B1A00951547 /* LifeExpectancyView.swift */,
+				645DDA052B8BD4AE00F712E4 /* ProgressBarView.swift */,
+				64703A012B8F354500380D5C /* TextBubble.swift */,
+				6400C7942B8F813700B11CBC /* MarkerProgressView.swift */,
+				645DDA412B8BDF5500F712E4 /* LifelineView.swift */,
+			);
+			path = LifeExpectancyView;
+			sourceTree = "<group>";
+		};
 		643F7F6B2E90FC4F008788E8 /* ToggleView */ = {
 			isa = PBXGroup;
 			children = (
@@ -307,14 +319,10 @@
 		64703A002B8F34D100380D5C /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				6439CC1C2E9BD35100F2E1B7 /* LifeExpectancyView */,
 				643F7F6B2E90FC4F008788E8 /* ToggleView */,
 				648B31632E8998D900380C60 /* ExportView */,
 				648B31602E8995EA00380C60 /* TabBarView.swift */,
-				642470432B8B3B1A00951547 /* LifeExpectancyView.swift */,
-				645DDA052B8BD4AE00F712E4 /* ProgressBarView.swift */,
-				645DDA412B8BDF5500F712E4 /* LifelineView.swift */,
-				64703A012B8F354500380D5C /* TextBubble.swift */,
-				6400C7942B8F813700B11CBC /* MarkerProgressView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
