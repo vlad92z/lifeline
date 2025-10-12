@@ -13,12 +13,14 @@ struct HealthCSVWriter {
     static let lifelinePrefix = "lifeline_"
     
     let csvWriterFactory: CSVWritingFactory
+    let healthReader: HealthMetricReading
     
     var formatter = DateFormatter()
     var calendar = Calendar.current
     
-    init(csvWriterFactory: CSVWritingFactory) {
+    init(csvWriterFactory: CSVWritingFactory, healthReader: HealthMetricReading) {
         self.csvWriterFactory = csvWriterFactory
+        self.healthReader = healthReader
         formatter.timeZone = .current
         formatter.dateStyle = .medium
         formatter.timeStyle = .none
@@ -32,12 +34,11 @@ struct HealthCSVWriter {
         let headers = [HealthCSVWriter.dateHeader] + metrics.map { $0.name }
         let csvWriter = try csvWriterFactory.make(filename: newFileName(), headers: headers)
         
-        let reader = HealthMetricReader()
         var hasWrittenFirstRow = false // needed to ignore leading empty rows
         
         var current = start
         while current <= end {
-            let dailyMetricMap = try await reader.dailyValues(for: metrics, date: current)
+            let dailyMetricMap = try await healthReader.dailyValues(for: metrics, date: current)
             let keyValuePairs = dailyMetricMap.map { key, value in
                 return (key.name, value?.toString)
             }
@@ -54,4 +55,3 @@ struct HealthCSVWriter {
         return csvWriter.url
     }
 }
-
