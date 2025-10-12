@@ -9,7 +9,6 @@ import Foundation
 
 @MainActor
 final class HealthExportViewModel: ObservableObject {
-    // Published properties used by the View
     @Published var metricsToExport: Set<String> = []
     @Published var start: Date = Calendar.current.startOfDay(for: Date())
     @Published var end: Date = Calendar.current.startOfDay(for: Date())
@@ -28,11 +27,13 @@ final class HealthExportViewModel: ObservableObject {
         return metricsToExport.sorted().joined(separator: ", ")
     }
     
-    func onAppear() {
-        loadMetricsSelection()
-        // Ensure dates are normalized on first appear
-        normalizeStart()
-        normalizeEnd()
+    init() {
+        if let saved = UserDefaults.standard.stringArray(forKey: metricsSelectionDefaultsKey) {
+            metricsToExport = Set(saved)
+        }
+        Task {
+            availableMetrics = await HealthMetricReader().getAvailableMetrics()
+        }
     }
     
     func metricsSelectionDidChange() {
@@ -80,11 +81,5 @@ final class HealthExportViewModel: ObservableObject {
         let writer = HealthCSVWriter(csvWriterFactory: CSVWriterFactory(), healthReader: HealthMetricReader())
         let metrics = HealthMetric.metrics(from: metricsToExport)
         return try! await writer.write(metrics: metrics, from: start, to: end)
-    }
-    
-    func setAvailableMetrics() {
-        Task {
-            availableMetrics = await HealthMetricReader().getAvailableMetrics()
-        }
     }
 }
