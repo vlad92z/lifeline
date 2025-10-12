@@ -10,8 +10,12 @@ import Foundation
 @MainActor
 final class HealthExportViewModel: ObservableObject {
     @Published var metricsToExport: Set<String> = []
-    @Published var start: Date = Calendar.current.startOfDay(for: Date())
-    @Published var end: Date = Calendar.current.startOfDay(for: Date())
+    @Published var start: Date = Calendar.current.startOfDay(for: Date()) {
+        didSet { normalizeStartInternal() }
+    }
+    @Published var end: Date = Calendar.current.startOfDay(for: Date()) {
+        didSet { normalizeEndInternal() }
+    }
     @Published var isExporting: Bool = false
     @Published var shareURL: URL?
     @Published var availableMetrics: Set<HealthMetric.ID> = []
@@ -36,26 +40,6 @@ final class HealthExportViewModel: ObservableObject {
         }
     }
     
-    func metricsSelectionDidChange() {
-        saveMetricsSelection()
-    }
-    
-    func normalizeStart() {
-        let today = calendar.startOfDay(for: Date())
-        var normalizedStart = calendar.startOfDay(for: start)
-        if normalizedStart > today { normalizedStart = today }
-        start = normalizedStart
-        if start > end { end = start }
-    }
-    
-    func normalizeEnd() {
-        let today = calendar.startOfDay(for: Date())
-        var normalizedEnd = calendar.startOfDay(for: end)
-        if normalizedEnd > today { normalizedEnd = today }
-        end = normalizedEnd
-        if end < start { start = end }
-    }
-    
     func exportCSV() async {
         guard !isExporting else { return }
         isExporting = true
@@ -71,9 +55,27 @@ final class HealthExportViewModel: ObservableObject {
         }
     }
     
-    private func saveMetricsSelection() {
+    func saveMetricsSelection() {
         let arr = Array(metricsToExport).sorted()
         UserDefaults.standard.set(arr, forKey: metricsSelectionDefaultsKey)
+    }
+    
+    private func normalizeStartInternal() {
+        let today = calendar.startOfDay(for: Date())
+        var normalized = calendar.startOfDay(for: start)
+        if normalized > today { normalized = today }
+        // Keep invariant: start <= end
+        if normalized > end { end = normalized }
+        if start != normalized { start = normalized }
+    }
+
+    private func normalizeEndInternal() {
+        let today = calendar.startOfDay(for: Date())
+        var normalized = calendar.startOfDay(for: end)
+        if normalized > today { normalized = today }
+        // Keep invariant: start <= end
+        if normalized < start { start = normalized }
+        if end != normalized { end = normalized }
     }
     
     // MARK: - CSV
