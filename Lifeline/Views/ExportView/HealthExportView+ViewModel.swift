@@ -77,9 +77,9 @@ final class HealthExportViewModel: ObservableObject {
     
     // MARK: - CSV
     private func csvTempURL() async -> URL {
-        let writer = CSVWriter()
+        let writer = HealthCSVWriter()
         let metrics = HealthMetric.metrics(from: metricsToExport)
-        return await writer.write(metrics: metrics, from: start, to: end)
+        return try! await writer.write(metrics: metrics, from: start, to: end)
     }
     
     func setAvailableMetrics() {
