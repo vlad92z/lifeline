@@ -7,7 +7,11 @@
 
 import Foundation
 
-struct HealthCSVWriter {
+protocol HealthCSVWriting {
+    func write(metrics: [HealthMetric], from start: Date, to end: Date) async throws -> URL
+}
+
+struct HealthCSVWriter: HealthCSVWriting {
     
     static let dateHeader = "Date"
     static let lifelinePrefix = "lifeline_"

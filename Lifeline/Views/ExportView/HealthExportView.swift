@@ -15,7 +15,12 @@ extension URL: @retroactive Identifiable {
 
 struct HealthExportView: View {
         
-    @StateObject private var viewModel = HealthExportViewModel()
+    @StateObject private var viewModel = HealthExportViewModel(
+        healthCSVWriter: HealthCSVWriter(
+            csvWriterFactory: CSVWriterFactory(),
+            healthReader: HealthMetricReader()
+        )
+    )
     
     var body: some View {
         NavigationStack {
