@@ -14,7 +14,7 @@ struct HealthExportRootView: View {
         if isRequested {
             HealthExportView()
         } else {
-            HealthKitAuthorisationView(healthReader: HealthKitReader(), isHealthDataAccessRequested: $isRequested)
+            HealthKitAuthorisationView(healthReader: HealthMetricReader(), isHealthDataAccessRequested: $isRequested)
         }
     }
 }

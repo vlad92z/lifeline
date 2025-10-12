@@ -6,7 +6,7 @@
 //
 import HealthKit
 
-struct HealthKitReader {
+struct HealthMetricReader {
     let healthKit = HKHealthStore()
     
     var isAvailable: Bool {

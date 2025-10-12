@@ -12,10 +12,13 @@ struct HealthCSVWriter {
     static let dateHeader = "Date"
     static let lifelinePrefix = "lifeline_"
     
+    let csvWriterFactory: CSVWritingFactory
+    
     var formatter = DateFormatter()
     var calendar = Calendar.current
     
-    init() {
+    init(csvWriterFactory: CSVWritingFactory) {
+        self.csvWriterFactory = csvWriterFactory
         formatter.timeZone = .current
         formatter.dateStyle = .medium
         formatter.timeStyle = .none
@@ -27,9 +30,9 @@ struct HealthCSVWriter {
     
     func write(metrics: [HealthMetric], from start: Date, to end: Date) async throws -> URL {
         let headers = [HealthCSVWriter.dateHeader] + metrics.map { $0.name }
-        let csvWriter = try CSVWriter(filename: newFileName(), headers: headers)
+        let csvWriter = try csvWriterFactory.make(filename: newFileName(), headers: headers)
         
-        let reader = HealthKitReader()
+        let reader = HealthMetricReader()
         var hasWrittenFirstRow = false // needed to ignore leading empty rows
         
         var current = start

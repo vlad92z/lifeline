@@ -77,14 +77,14 @@ final class HealthExportViewModel: ObservableObject {
     
     // MARK: - CSV
     private func csvTempURL() async -> URL {
-        let writer = HealthCSVWriter()
+        let writer = HealthCSVWriter(csvWriterFactory: CSVWriterFactory())
         let metrics = HealthMetric.metrics(from: metricsToExport)
         return try! await writer.write(metrics: metrics, from: start, to: end)
     }
     
     func setAvailableMetrics() {
         Task {
-            availableMetrics = await HealthKitReader().getAvailableMetrics()
+            availableMetrics = await HealthMetricReader().getAvailableMetrics()
         }
     }
 }

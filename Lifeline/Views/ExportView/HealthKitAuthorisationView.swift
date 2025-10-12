@@ -8,7 +8,7 @@ import SwiftUI
 
 struct HealthKitAuthorisationView: View {
     
-    let healthReader: HealthKitReader
+    let healthReader: HealthMetricReader
     @Binding var isHealthDataAccessRequested: Bool
     
     var body: some View {
@@ -74,6 +74,6 @@ struct HealthKitAuthorisationView: View {
 
 #Preview("HealthKitAccessView") {
     @Previewable @State var healthData = false
-    HealthKitAuthorisationView(healthReader: HealthKitReader(), isHealthDataAccessRequested: $healthData)
+    HealthKitAuthorisationView(healthReader: HealthMetricReader(), isHealthDataAccessRequested: $healthData)
 }
 
