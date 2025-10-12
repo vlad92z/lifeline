@@ -27,7 +27,6 @@ struct HealthCSVWriter {
     
     func write(metrics: [HealthMetric], from start: Date, to end: Date) async throws -> URL {
         let headers = [HealthCSVWriter.dateHeader] + metrics.map { $0.name }
-        let filename = "\(HealthCSVWriter.lifelinePrefix)\(UUID().uuidString)"
         let csvWriter = try CSVWriter(filename: newFileName(), headers: headers)
         
         let reader = HealthKitReader()

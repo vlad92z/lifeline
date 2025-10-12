@@ -7,7 +7,7 @@
 
 import Foundation
 
-class CSVWriter {
+class CSVWriter: CSVWriting {
     
     static let fileExtension = "csv"
     
