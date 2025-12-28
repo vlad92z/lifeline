@@ -35,5 +35,4 @@ struct ProgressBarView: View {
 #Preview {
     ProgressBarView(remaining: 0.7)
         .frame(height: 4)
-        .previewLayout(.sizeThatFits)
 }
