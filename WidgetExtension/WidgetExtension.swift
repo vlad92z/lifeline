@@ -65,6 +65,7 @@ struct LifeGridWidgetEntryView: View {
     var entry: Provider.Entry
     @SharedAppStorage("selectedDate") var storedBirthday = Date().timeIntervalSince1970
     @SharedAppStorage("lifeExpectancy") var storedLifeExpectancy = 83
+    @Environment(\.colorScheme) private var colorScheme
 
     var body: some View {
         LifeGridMedium(
@@ -72,6 +73,9 @@ struct LifeGridWidgetEntryView: View {
             lifeExpectancy: storedLifeExpectancy,
             columns: 48
         )
+        .containerBackground(for: .widget) {
+            colorScheme == .dark ? Color.black : Color.white
+        }
     }
 }
 
@@ -81,7 +85,6 @@ struct LifeGridWidget: Widget {
     var body: some WidgetConfiguration {
         AppIntentConfiguration(kind: kind, intent: ConfigurationAppIntent.self, provider: Provider()) { entry in
             LifeGridWidgetEntryView(entry: entry)
-                .containerBackground(.fill.tertiary, for: .widget)
         }
         .supportedFamilies([.systemMedium])
     }
