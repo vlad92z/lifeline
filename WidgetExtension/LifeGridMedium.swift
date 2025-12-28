@@ -14,8 +14,8 @@ struct LifeGridMedium: View {
     let lifeExpectancy: Int
     let columns: Int
 
-    private let pastColor = Color.gray.opacity(0.55)
-    private let futureColor = Color.pink.opacity(0.85)
+    private let pastColor = Color.pink.opacity(0.85)
+    private let futureColor = Color.gray.opacity(0.55)
 
     var body: some View {
         let totalMonths = max(lifeExpectancy, 0) * 12

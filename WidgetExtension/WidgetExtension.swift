@@ -61,6 +61,32 @@ struct WidgetExtension: Widget {
     }
 }
 
+struct LifeGridWidgetEntryView: View {
+    var entry: Provider.Entry
+    @SharedAppStorage("selectedDate") var storedBirthday = Date().timeIntervalSince1970
+    @SharedAppStorage("lifeExpectancy") var storedLifeExpectancy = 83
+
+    var body: some View {
+        LifeGridMedium(
+            birthday: Date(timeIntervalSince1970: storedBirthday),
+            lifeExpectancy: storedLifeExpectancy,
+            columns: 48
+        )
+    }
+}
+
+struct LifeGridWidget: Widget {
+    let kind: String = "LifeGridWidget"
+
+    var body: some WidgetConfiguration {
+        AppIntentConfiguration(kind: kind, intent: ConfigurationAppIntent.self, provider: Provider()) { entry in
+            LifeGridWidgetEntryView(entry: entry)
+                .containerBackground(.fill.tertiary, for: .widget)
+        }
+        .supportedFamilies([.systemMedium])
+    }
+}
+
 #Preview(as: .systemSmall) {
     WidgetExtension()
 } timeline: {
