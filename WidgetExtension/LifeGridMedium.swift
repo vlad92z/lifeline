@@ -14,8 +14,15 @@ struct LifeGridMedium: View {
     let lifeExpectancy: Int
     let columns: Int
 
-    private let pastColor = Color.pink.opacity(0.85)
-    private let futureColor = Color.gray.opacity(0.55)
+    private let monthsPerDecade = 120
+    private let decadeFutureColors = [
+        Color.gray.opacity(0.85),
+        Color.gray.opacity(0.65)
+    ]
+    private let decadePastColors = [
+        Color.pink,
+        Color.orange
+    ]
 
     var body: some View {
         let totalMonths = max(lifeExpectancy, 0) * 12
@@ -39,7 +46,7 @@ struct LifeGridMedium: View {
             ) {
                 ForEach(0..<totalSquares, id: \.self) { index in
                     RoundedRectangle(cornerRadius: cornerRadius)
-                        .fill(index < monthsSpent ? pastColor : futureColor)
+                        .fill(squareColor(for: index, monthsSpent: monthsSpent))
                         .frame(width: squareSize, height: squareSize)
                 }
             }
@@ -54,6 +61,15 @@ struct LifeGridMedium: View {
         let years = components.year ?? 0
         let months = components.month ?? 0
         return max(0, years * 12 + months)
+    }
+
+    private func squareColor(for index: Int, monthsSpent: Int) -> Color {
+        let decadeIndex = max(0, index) / monthsPerDecade
+        let colorIndex = decadeIndex % 2
+        if index < monthsSpent {
+            return decadePastColors[colorIndex]
+        }
+        return decadeFutureColors[colorIndex]
     }
 }
 
