@@ -21,7 +21,7 @@ struct LifeGridMedium: View {
     ]
     private let decadePastColors = [
         Color.pink,
-        Color.orange
+        Color.pink.opacity(0.5)
     ]
 
     var body: some View {
